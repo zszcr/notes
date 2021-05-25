@@ -16,7 +16,8 @@
         "hide-element",
         "page-toc-button" ,
         "rss",
-        "github"
+        "github",
+        "custom-favicon"
     ],
     "pluginsConfig":{
         "code": {
@@ -51,6 +52,7 @@
         },
         "github":{
             "url": "https://github.com/zszcr/notes"
-        }
+        },
+        "favicon": "images/favicon.png"
     }
   }
