@@ -1,0 +1,52 @@
+{
+    "gitbook": "3.2.3",
+    "plugins": [
+        "localized-footer", 
+        "-lunr", 
+        "-search", 
+        "search-pro", 
+        "back-to-top-button",
+        "code",
+        "tbfed-pagefooter",
+        "back-to-top-button",
+        "popup",
+        "toggle-chapters",
+        "collapsible-chapters",
+        "page-toc-button",
+        "hide-element",
+        "page-toc-button" ,
+        "rss"
+    ],
+    "pluginsConfig":{
+        "code": {
+            "copyButtons": false
+          },
+          "tbfed-pagefooter": {
+            "copyright": "Copyright © Sec0zrc@gmail.com 2021",
+            "modify_label": "该文章修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "hide-element": {
+            "elements": [".gitbook-link"]
+        },
+        "pluginsConfig": {
+            "page-toc-button": {
+                "maxTocDepth": 2,
+                "minTocSize": 2
+            }
+        },
+        "rss": {
+            "title": "Sec0zrc's knowledge base book",
+            "description": "study notes.",
+            "author": "Sec0zrc",
+            "feed_url": "http://gitbook.zhangjikai.com/rss",
+            "site_url": "http://book.org/",
+            "managingEditor": "Sec0zrc@gmail.com (Sec0zrc)",
+            "webMaster": "Sec0zrc@gmail.com (Sec0zrc)",
+            "categories": [
+              "Security",
+              "Web"
+            ]
+          }
+    }
+  }
