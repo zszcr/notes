@@ -1,2 +1,0 @@
-# CTF练习writeup
-

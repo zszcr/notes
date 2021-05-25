@@ -15,7 +15,8 @@
         "page-toc-button",
         "hide-element",
         "page-toc-button" ,
-        "rss"
+        "rss",
+        "github"
     ],
     "pluginsConfig":{
         "code": {
@@ -31,7 +32,7 @@
         },
         "pluginsConfig": {
             "page-toc-button": {
-                "maxTocDepth": 2,
+                "maxTocDepth": 5,
                 "minTocSize": 2
             }
         },
@@ -39,14 +40,17 @@
             "title": "Sec0zrc's knowledge base book",
             "description": "study notes.",
             "author": "Sec0zrc",
-            "feed_url": "http://gitbook.zhangjikai.com/rss",
-            "site_url": "http://book.org/",
+            "feed_url": "http://zszcr.github.io/notes/rss",
+            "site_url": "http://zszcr.github.io/notes/",
             "managingEditor": "Sec0zrc@gmail.com (Sec0zrc)",
             "webMaster": "Sec0zrc@gmail.com (Sec0zrc)",
             "categories": [
               "Security",
               "Web"
             ]
-          }
+        },
+        "github":{
+            "url": "https://github.com/zszcr/notes"
+        }
     }
   }

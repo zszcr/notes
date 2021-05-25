@@ -3,9 +3,7 @@ typora-copy-images-to: ../images
 typora-root-url: ..
 ---
 
-## XSS学习笔记
-
-如题
+# XSS漏洞原理及利用
 
 
 
@@ -207,9 +205,9 @@ XSS Polyglot也可以说是XSS通用攻击payload吧，它由不同语言的元�
 
 解释：
 
+![image-20200504162932559](/images/image-20200504162932559.png)
 
 
-![image-20210525103527972](/images/image-20210525103527972.png)
 
 #### 常见的绕过方法
 
@@ -227,8 +225,6 @@ XSS Polyglot也可以说是XSS通用攻击payload吧，它由不同语言的元�
 ### 漏洞防御
 
 参照： https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html 
-
-
 
 
 
