@@ -39,7 +39,7 @@ typora-root-url: ..
 
 #### MYSQL的相关知识点
 
-在漏洞利用前，先了解下MYSQL与SQL注入相关的知识点，后面SQL注入利用都是基于MYSQL的。
+在进行利用前，先了解下MYSQL与SQL注入相关的知识点，后面SQL注入利用都是基于MYSQL的。
 
 **information_schema库**
 

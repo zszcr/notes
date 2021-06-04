@@ -6,6 +6,7 @@
     * [XSS漏洞](web常见漏洞原理及利用/XSS漏洞.md)
     * [命令执行&代码执行漏洞](web常见漏洞原理及利用/命令执行&代码执行漏洞.md)
     * [PHP反序列化漏洞](web常见漏洞原理及利用/PHP反序列化漏洞.md)
+    * [文件上传漏洞](web常见漏洞原理及利用/文件上传漏洞.md)
 * [CTFwriteup](CTFwriteup/README.md)
     * [sqli-labs-writeup](CTFwriteup/sqli-labs-writeup.md)
-
+    * [upload_labs writeup](CTFwriteup/upload_labs writeup.md)
