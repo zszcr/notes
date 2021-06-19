@@ -9,7 +9,7 @@ typora-root-url: ..
 
 ### 漏洞原理
 
-服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而打到执行攻击者所预期的结果。
+服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而达到攻击者所预期的结果。
 
 例如：
 
@@ -99,9 +99,9 @@ COLUMNS表中存储该用户创建的所有数据库的库名、表名和字段�
 
 **注释**
 
-行间注释：-- 和 #
+行间注释：--+ 和 #
 
-> select * from user; --
+> select * from user; --+
 >
 > or
 >
@@ -122,6 +122,79 @@ limit会返回前面几条或者中间几条数据
 > select * from user limit m,n
 
  其m指记录从0开始的第m+1条记录， n指从第m+1条开始取n条记录
+
+
+
+**文件导入导出的相关操作**
+
+mysql常用的写入写出文件的函数有：
+
+* into dumpfile()
+* into outfile()
+* load_file()
+
+
+
+读写文件函数的限制：
+涉及在服务器上写入或读取文件，上面的函数能否执行成功受到secure_file_priv这个参数的影响
+
+secure_file_priv参数的意义：
+
+```
+secure_file_priv=null 不允许文件的导入导出 
+ 
+secure_file_priv=xxx 只允许在这个目录中执行文件的导入和导出操作，这个目录必须存在，MYSQL不会创建它
+ 
+secure_file_priv=/  可以导入导出文件到任意位置
+```
+
+这个参数可以通过`select @@secure_file_priv`语句查询，而且这个参数不能动态更改，只能在配置文件中更改，然后重启生效
+
+![image-20210617153725778](/images/image-20210617153725778.png)
+
+
+
+通过load_file()函数读取文件：
+
+demo：
+
+> select load_file("c:\\boot.ini")
+>
+> select 1,2,3,4,5,6,7,hex(replace(load_file(char(99,58,92,119,105,110,100,111,119,115,92, 114,101,112,97,105,114,92,115,97,109)))
+>
+> #char(99,58,47,98,111,111,116,46,105,110,105)就是c:/boot.ini的ascii码
+
+load_file()函数会读取文件并返回该文件的内容作为一个字符串
+
+使用条件：
+
+* 必须有权限进行读写并且文件必须完全可读
+* 必须指定文件的完整路径
+* 读取文件的大小必须小于max_allowed_packet
+
+
+
+导出数据：
+
+这里有两个函数可以用于导出数据，into outfile()和 into dumpfile()
+
+> select .. into outfile
+>
+> select .. int dumpfile
+
+其中outfile函数可以导出多行，而dumpfile只能导出一行数据。outfile函数在将数据写到文件里时有特殊的格式转换，而dumpfile则保持原数据格式。同时outfile后面不能接0x开头或者char转换以后的路径，只能是单引号路径。
+
+demo：
+
+```
+# into outfile
+select version() into outfile "c:\\phpstduy_pro\\www\\test.php"
+
+#into dumpfile
+select * from test into dumpfile '/tmp/test.txt'
+```
+
+
 
 
 
@@ -268,14 +341,6 @@ mysqli_close($conn);
 
    > http://www.xxx.com/index.php?name=admin
 
-   判断字符型注入：
-
-   > ?name=admin' and '1'=1 --'
-   >
-   > ?name=admin' and '1'=2 --'
-
-   如果第一个页面显示正常，第二个出现错误，则可以进行字符型注入。
-
    这类型的注入一般都要先闭合引号，单引号就闭合单引号，双引号就闭合双引号，同时在构造的SQL语句后加注释符将后面的引号注释掉。
 
 3. 搜索型注入
@@ -290,7 +355,7 @@ mysqli_close($conn);
 
    >  SELECT * FROM news WHERE title like '%news' and 1=1 and'%=%';
 
-   所以存在SQL注入漏洞，利用时记得闭合引号和百分号就好了。
+   所以存在SQL注入漏洞，利用时记得闭合引号和百分号。
 
 
 
