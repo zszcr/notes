@@ -319,3 +319,116 @@ apt install firefox-esr-l10n-zh-cn
 #### 安装hackbar
 
 破解方法参照之前写的文章，装完后要关闭更新
+
+
+
+
+
+### 替换burpsuite
+
+将社区版burpsuite替换为专业版的，这里我选的版本是2022.5.1
+
+1. 安装jdk
+
+   ```bash
+   #确定java版本
+   java --version
+   #确定jdk安装路径
+   update-alternatives --config java
+   # 默认位置为/usr/lib/jvm/
+   
+   # 将下载好的JDK包解压至/usr/lib/jvm/
+   tar zvxf jdk-17_linux-x64_bin.tar.gz 
+   mv ./jdk-17.0.3.1/ /usr/lib/jvm/
+   
+   # 更新kali可以使用的java版本
+   update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-17.0.3.1/bin/java 777
+   
+   # 修改java版本，选择jdk-17.0.3.1
+   update-alternatives --config java
+   
+   # 确认java版本
+   Java --version
+   
+   ```
+
+2. 下载burpsuite和注册机
+
+   注册机地址：https://github.com/h3110w0r1d-y/BurpLoaderKeygen/releases
+
+   burpsuite地址：https://portswigger.net/burp/Releases
+
+   ```bash
+   #将下载的文件都拷贝到/usr/bin目录下
+   sudo cp -r burpsuite_pro_v2022.5.1.jar BurpLoaderKeygen.jar /usr/bin
+   ```
+
+3. 运行注册机激活burpsuite
+
+   ```bash
+   sudo java -jar BurpLoaderKeygen.jar
+   ```
+
+   常规激活操作，参考：https://blog.csdn.net/zw05011/article/details/122459723
+
+   这里之所以用sudo来操作，是因为普通用户状态下它的`_JAVA_OPTIONS`环境变量会导致运行失败
+
+   错误如下所示：
+
+   ```bash
+   ☁  ~  java -jar BurpLoaderKeygen.jar 
+   Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+   Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+   	at com.h3110w0r1d.burploaderkeygen.KeygenForm.getJavaVersion(KeygenForm.java:60)
+   	at com.h3110w0r1d.burploaderkeygen.KeygenForm.GetCMD(KeygenForm.java:103)
+   	at com.h3110w0r1d.burploaderkeygen.KeygenForm.main(KeygenForm.java:268)
+   ```
+
+   它这里显示KeygenForm.java:60发生了数组下标溢出，它在获取Java版本时产生了溢出，我猜测是java版本号太长？
+
+   我这里使用的java版本如下：
+
+   ```
+   java 17.0.3.1 2022-04-22 LTS
+   Java(TM) SE Runtime Environment (build 17.0.3.1+2-LTS-6)
+   Java HotSpot(TM) 64-Bit Server VM (build 17.0.3.1+2-LTS-6, mixed mode, sharing)
+   ```
+
+   我淦，真的是java版本问题，我这里切回kali自带java就行了
+
+4. 设置启动快捷键
+
+   先删除burpsuite社区版
+
+   ```bash
+   cd /usr/bin
+   sudo rm -rf burpsuite
+   ```
+
+   然后新建burpsuite，burpsuite内容如下
+
+   ```bash
+   sudo vim burpsuite
+   
+   #!/bin/sh
+   java -jar BurpLoaderKeygen.jar
+   ```
+
+   增加权限
+
+   ```bash
+   sudo chmod +x burpsuite
+   ```
+
+   这就基本搞定了，我这里还没有搞桌面快捷键......在终端输入burpsuite就可以用了
+
+   
+
+   
+
+   
+
+   
+
+   
+
