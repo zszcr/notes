@@ -1,0 +1,6 @@
+Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+Unrecognized option: -ar
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+/usr/lib/jvm/java-11-openjdk-amd64/bin/java -javaagent:BurpLoaderKeygen.jar -noverify -jar burpsuite_pro_v2022.5.1.jar
+

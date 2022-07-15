@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Sec0zrc's knowledge base book]]></title>
+        <description><![CDATA[study notes.]]></description>
+        <link>http://zszcr.github.io/notes/</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 15 Jul 2022 13:10:34 GMT</lastBuildDate>
+        <atom:link href="http://zszcr.github.io/notes/rss" rel="self" type="application/rss+xml"/>
+        <author><![CDATA[Sec0zrc]]></author>
+        <managingEditor><![CDATA[Sec0zrc@gmail.com (Sec0zrc)]]></managingEditor>
+        <webMaster><![CDATA[Sec0zrc@gmail.com (Sec0zrc)]]></webMaster>
+        <category><![CDATA[Security]]></category>
+        <category><![CDATA[Web]]></category>
+        <item>
+            <title><![CDATA[简介]]></title>
+            <description><![CDATA[病了很久，也颓废了很久，感觉自己现在陷入了舒适区，每天的生活不断重复，但是丝毫看不到自己的成长。每当想要开始学习，提升自己的时候，却总学不进去，然后过不久又进入了舒适区。感觉现在自己的自控力近乎于无，真是要命。]]></description>
+            <link>http://zszcr.github.io/notes/</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[Web常见漏洞原理及利用]]></title>
+            <description><![CDATA[这一部分是我学习Web常见漏洞的学习笔记，记录常见漏洞原理及相关利用方法]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/README.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/README.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[SQL注入漏洞]]></title>
+            <description><![CDATA[服务端在与数据库进行交互时，使用了字符串拼接的方式构造SQL语句，并且服务端没有对用户提交的参数进行严格的过滤，导致用户可以将SQL语句插入到可控参数中，改变原有的SQL语义结构，从而达到攻击者所预期的结果。]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/SQL注入漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/SQL注入漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[XSS漏洞原理及利用]]></title>
+            <description><![CDATA[跨站脚本攻击—XSS（Cross Site Script），是指攻击者通过在Web页面中写入恶意脚本，造成用户在浏览页面时，控制用户浏览器进行操作的攻击方式。假设，在一个服务端上，有一处功能使用了这段代码，他的功能是将用户输入的内容输出到页面上，很常见的一个功能。但是假如，这里输入的内容是一段经过构造的js。那么在用户再次访问这个页面时，就会获取使用js在用户的浏览器端执行一个弹窗操作。通过构造其他相应的代码，攻击者可以执行更具危害的操作。]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/XSS漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/XSS漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[CSRF( Cross Site Request Forgery)也就是跨站请求伪造。对于 CSRF来说，其两个关键点是跨站与请求伪造，跨站的意思很好理解，也就是跨域名访问，具体指的是运行在浏览器中的某个URL下的脚本读取另一个域名在当前浏览器的存储数据，例如cookie。请求伪造就伪造成受害用户向服务器发送操作请求，执行用户非预期的操作。一般流程是攻击者诱导受害者访问第三方网站，然后第三方网站向被攻击的网站发送跨站请求。利用受害者在被攻击网站获取的登录凭证，绕过后台的校验，从而达到冒充受害用户对被攻击网站执行某项操作的目的。]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/CSRF漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/CSRF漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[SSRF(Server-Side Request Forgery)就是服务端请求伪造，它是一种由攻击者构造而从服务端发起请求的一个漏洞。攻击者在未能获得服务器所有权限时，利用服务器漏洞以服务器的身份发送一条构造好的请求给服务器所在的内网。SSRF工具通常针对的是外部网络无法直接访问的内部系统。]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/SSRF漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/SSRF漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[命令执行&代码执行漏洞]]></title>
+            <description><![CDATA[代码执行漏洞是由于web应用过滤不严谨，导致用户可以通过请求将代码注入到web应用中进行执行。php中有一些函数可以将参数当作代码来执行，例如assert()、call_user_func()等。当开发者使用了这些函数时，但没有对参数进行严格限制，导致了用户可以控制这些函数的参数，执行任意代码，这就是代码执行漏洞。]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/命令执行&amp;代码执行漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/命令执行&amp;代码执行漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[PHP反序列化漏洞]]></title>
+            <description><![CDATA[PHP使用serialize()函数来进行序列化]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/PHP反序列化漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/PHP反序列化漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[网站WEB应用存在一些文件上传功能，如文档、头像、图片、视频上传等，但是上传文件时，服务端代码对客户端上传的文件没有进行严格的校验和过滤，就可能导致可以上传任意文件。]]></description>
+            <link>http://zszcr.github.io/notes/web常见漏洞原理及利用/文件上传漏洞.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/web常见漏洞原理及利用/文件上传漏洞.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[CTFwriteup]]></title>
+            <description><![CDATA[这一部分是我做的CTF练习的writeup]]></description>
+            <link>http://zszcr.github.io/notes/CTFwriteup/README.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/CTFwriteup/README.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[sqli-labs writeup]]></title>
+            <description><![CDATA[刷刷sqli-labs ，学习下sql注入漏洞]]></description>
+            <link>http://zszcr.github.io/notes/CTFwriteup/sqli-labs-writeup.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/CTFwriteup/sqli-labs-writeup.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[环境是windows，这里我用了他提供的集成环境，注意要修改apache的配置文件，因为他里面的路径和自己本地的不同，如果不修改的话apache会一直启动不来。]]></description>
+            <link>http://zszcr.github.io/notes/CTFwriteup/upload_labs writeup.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/CTFwriteup/upload_labs writeup.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[工具相关]]></title>
+            <description><![CDATA[这一部分会记录我常用工具的一些用法或是我折腾工具的一些历程]]></description>
+            <link>http://zszcr.github.io/notes/工具相关/README.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/工具相关/README.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[作为一个倔强的白嫖怪(主要是没钱)，用到的工具都是基本都是破解版。]]></description>
+            <link>http://zszcr.github.io/notes/工具相关/hackbar破解和踩坑之路.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/工具相关/hackbar破解和踩坑之路.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[获取最新的软件源包，并添加到当前的apt库中]]></description>
+            <link>http://zszcr.github.io/notes/工具相关/Ubuntu18安装Go.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/工具相关/Ubuntu18安装Go.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <description><![CDATA[前言]]></description>
+            <link>http://zszcr.github.io/notes/工具相关/内网穿透.html</link>
+            <guid isPermaLink="true">http://zszcr.github.io/notes/工具相关/内网穿透.html</guid>
+            <dc:creator><![CDATA[Sec0zrc]]></dc:creator>
+        </item>
+    </channel>
+</rss>
