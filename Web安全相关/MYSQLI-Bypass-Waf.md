@@ -1,6 +1,0 @@
-## MYSQLI Bypass Waf
-
-
-
-
-
